@@ -1,100 +1,530 @@
 import { Link } from 'react-router-dom'
-import { products, company } from '../data/productos'
-import './Home.css'
+import { products } from '../data/productos'
 
 function Home() {
   return (
-    <div className="home">
-      <section className="hero">
-        <div className="hero-content">
-          <h1 className="hero-title">
-            {company.name}
-            <span className="hero-tagline">{company.tagline}</span>
-          </h1>
-          <p className="hero-description">{company.description}</p>
-          <div className="hero-buttons">
-            <Link to="/productos" className="btn btn-primary">
-              Ver Productos
-            </Link>
-            <Link to="/contacto" className="btn btn-outline">
-              Contactanos
-            </Link>
-          </div>
-        </div>
-        <div className="hero-visual">
-          <div className="code-block">
-            <div className="code-header">
-              <span className="dot red"></span>
-              <span className="dot yellow"></span>
-              <span className="dot green"></span>
-            </div>
-            <pre className="code-content">
-              <code>{`const solution = {
-  ideas: transformToCode(yourIdeas),
-  web: buildWith(react, vite),
-  mobile: createNative(),
-  // ¡Listo!
-};`}</code>
-            </pre>
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen overflow-hidden">
+      {/* ─── HERO ─────────────────────────────────────────────── */}
+      <section className="relative pt-32 pb-28 px-4 sm:px-6 lg:px-8">
+        {/* Background atmosphere */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-[-180px] left-[-100px] w-[500px] h-[500px] rounded-full blur-[120px] opacity-15 bg-cyan-400" />
+          <div className="absolute top-[40%] right-[-150px] w-[450px] h-[450px] rounded-full blur-[120px] opacity-10 bg-blue-500" />
+          <div className="absolute bottom-0 left-[30%] w-[300px] h-[300px] rounded-full blur-[80px] opacity-8 bg-sky-300" />
 
-      <section className="features">
-        <div className="features-container">
-          <h2 className="section-title">¿Por qué elegirnos?</h2>
-          <div className="features-grid">
-            <div className="feature-card">
-              <div className="feature-icon">🎯</div>
-              <h3>Solutions Personalizadas</h3>
-              <p>Cada proyecto es único. Desarrollamos a medida para vos y tu negocio.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">⚡</div>
-              <h3>Tecnología Moderna</h3>
-              <p>Usamos las últimas tecnologías para máximo rendimiento y escalabilidad.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">🚀</div>
-              <h3>Entrega Rápida</h3>
-              <p>Metodologías ágiles para que tu proyecto esté online pronto.</p>
-            </div>
-          </div>
+          {/* Subtle dot grid */}
+          <div
+            className="absolute inset-0 opacity-[0.035]"
+            style={{
+              backgroundImage:
+                'radial-gradient(circle, var(--color-text-muted) 1px, transparent 1px)',
+              backgroundSize: '28px 28px',
+            }}
+          />
         </div>
-      </section>
 
-      <section className="products-preview">
-        <div className="products-container">
-          <h2 className="section-title">Nuestros Productos</h2>
-          <div className="products-grid">
-            {products.map((product) => (
-              <div key={product.id} className="product-card">
-                <div className="product-image" style={{ borderColor: product.color }}>
-                  <img src={product.image} alt={product.name} />
+        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+          {/* LEFT ─ copy */}
+          <div>
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[--color-border] bg-[--color-bg-card]/80 backdrop-blur-xl text-sm text-[--color-text-secondary] mb-10 shadow-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              Sitios web modernos listos en 72hs
+            </div>
+
+            <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] font-black leading-[0.92] tracking-tight text-[--color-text-primary]">
+              Tu negocio
+              <span className="block mt-1 bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent">
+                visible online
+              </span>
+              <span className="block mt-1">sin complicarte</span>
+            </h1>
+
+            <p className="mt-8 text-lg sm:text-xl leading-relaxed text-[--color-text-secondary] max-w-lg">
+              Creamos páginas web modernas para negocios reales. Rápidas, profesionales y conectadas
+              con WhatsApp, Google Maps y redes sociales.
+            </p>
+
+            {/* CTAs */}
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link
+                to="/contacto"
+                className="group relative inline-flex items-center gap-2 px-7 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold  outline-4 outline-cyan-300/60  shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_10px_25px_rgba(6,182,212,0.35)] hover:-translate-y-0.5 transition-all duration-200"
+              >
+                Quiero mi web
+                <svg
+                  className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                  />
+                </svg>
+              </Link>
+
+              <Link
+                to="/productos"
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl border border-[--color-border] bg-[--color-bg-card]/80 hover:bg-[--color-bg-elevated] hover:border-[--color-border-hover] backdrop-blur-xl text-[--color-text-primary] font-semibold hover:-translate-y-0.5 transition-all duration-200"
+              >
+                Ver ejemplos
+              </Link>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-3 mt-14">
+              {[
+                { value: '72hs', label: 'Tiempo promedio' },
+                { value: '+24', label: 'Negocios digitales' },
+                { value: '24/7', label: 'Presencia online' },
+              ].map((stat) => (
+                <div
+                  key={stat.value}
+                  className="rounded-2xl border border-[--color-border] bg-[--color-bg-card]/70 backdrop-blur-xl p-5 hover:border-cyan-500/30 hover:bg-[--color-bg-elevated] transition-all duration-200"
+                >
+                  <p className="text-3xl font-black text-[--color-text-primary] tracking-tight">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1.5 text-xs font-medium text-[--color-text-muted] uppercase tracking-wide">
+                    {stat.label}
+                  </p>
                 </div>
-                <h3>{product.name}</h3>
-                <p>{product.subtitle}</p>
-                <Link to={`/productos/${product.id}`} className="product-link">
-                  Ver más →
-                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT ─ mock browser */}
+          <div className="relative">
+            {/* Glow behind card */}
+            <div className="absolute inset-[-10%] bg-gradient-to-br from-cyan-400/15 via-sky-500/10 to-blue-600/15 blur-3xl rounded-full" />
+
+            <div className="relative rounded-[1.75rem] border border-[--color-border] bg-[--color-bg-card]/80 backdrop-blur-2xl overflow-hidden shadow-[0_32px_80px_rgba(0,0,0,0.25)]">
+              {/* Browser chrome */}
+              <div className="flex items-center gap-2 px-5 py-3.5 border-b border-[--color-border] bg-[--color-bg-section]/70">
+                <span className="w-3 h-3 rounded-full bg-red-400/90" />
+                <span className="w-3 h-3 rounded-full bg-yellow-400/90" />
+                <span className="w-3 h-3 rounded-full bg-green-400/90" />
+                <div className="ml-3 flex-1 h-8 rounded-lg bg-[--color-bg-base] border border-[--color-border] flex items-center px-3.5 gap-2 text-xs text-[--color-text-muted]">
+                  <svg
+                    className="w-3 h-3 shrink-0 opacity-60"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"
+                    />
+                  </svg>
+                  tunegocio.com
+                </div>
+              </div>
+
+              {/* Simulated content */}
+              <div className="p-7 space-y-5">
+                {/* Hero card */}
+                <div className="rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 p-[1px] shadow-[0_8px_24px_rgba(6,182,212,0.2)]">
+                  <div className="rounded-2xl bg-[--color-bg-elevated] p-7">
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-3">
+                          <div className="w-5 h-5 rounded bg-gradient-to-br from-cyan-400 to-blue-600" />
+                          <p className="text-xs font-semibold text-[--color-text-secondary] tracking-wide uppercase">
+                            Barbería Moderna
+                          </p>
+                        </div>
+                        <h3 className="text-2xl font-black text-[--color-text-primary] leading-tight">
+                          Reservá tu turno
+                          <br />
+                          online
+                        </h3>
+                        <div className="mt-5 flex gap-2.5">
+                          <div className="h-9 w-28 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 shadow-md" />
+                          <div className="h-9 w-20 rounded-xl border border-[--color-border] bg-[--color-bg-card]" />
+                        </div>
+                      </div>
+                      <div className="hidden sm:flex w-24 h-24 rounded-2xl bg-gradient-to-br from-cyan-400/30 to-blue-600/30 border border-cyan-400/20 items-center justify-center text-4xl">
+                        ✂️
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Feature mini-cards */}
+                <div className="grid grid-cols-3 gap-3">
+                  {[
+                    { icon: '⚡', label: 'Entrega rápida' },
+                    { icon: '📱', label: 'Responsive' },
+                    { icon: '💬', label: 'WhatsApp' },
+                  ].map((f) => (
+                    <div
+                      key={f.label}
+                      className="rounded-xl border border-[--color-border] bg-[--color-bg-section]/60 p-4 text-center"
+                    >
+                      <div className="text-xl mb-1.5">{f.icon}</div>
+                      <p className="text-[10px] font-semibold text-[--color-text-secondary]">
+                        {f.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Fake stat bar */}
+                <div className="rounded-xl border border-[--color-border] bg-[--color-bg-section]/40 p-4 flex items-center gap-4">
+                  <div className="flex-1 space-y-2">
+                    <div className="flex justify-between text-xs text-[--color-text-muted]">
+                      <span>Visitas este mes</span>
+                      <span className="text-cyan-500 font-bold">+38%</span>
+                    </div>
+                    <div className="h-1.5 rounded-full bg-[--color-border] overflow-hidden">
+                      <div className="h-full w-[68%] rounded-full bg-gradient-to-r from-cyan-400 to-blue-500" />
+                    </div>
+                  </div>
+                  <div className="text-2xl font-black text-[--color-text-primary]">2.4k</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── BENEFITS ─────────────────────────────────────────── */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[--color-bg-section] border-y border-[--color-border]">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold tracking-[0.15em] uppercase text-cyan-500 mb-4">
+              Solución simple
+            </p>
+            <h2 className="text-4xl sm:text-5xl font-black leading-[1.05] text-[--color-text-primary]">
+              Todo lo que tu negocio necesita para verse profesional
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-16">
+            {[
+              {
+                icon: '🌎',
+                title: 'Presencia online',
+                desc: 'Tu negocio visible en Google y accesible 24/7 desde cualquier dispositivo.',
+              },
+              {
+                icon: '💬',
+                title: 'WhatsApp integrado',
+                desc: 'Clientes contactándote directamente desde tu web con un solo clic.',
+              },
+              {
+                icon: '⚡',
+                title: 'Carga rápida',
+                desc: 'Sitios optimizados para máxima velocidad y mejor posición en Google.',
+              },
+              {
+                icon: '📱',
+                title: 'Diseño responsive',
+                desc: 'Perfecta en celulares, tablets y PC. Sin importar el dispositivo.',
+              },
+            ].map((item, i) => (
+              <div
+                key={item.title}
+                className="group relative rounded-3xl border border-[--color-border] bg-[--color-bg-card] p-7 hover:-translate-y-1.5 hover:border-cyan-500/30 hover:shadow-[0_20px_40px_rgba(6,182,212,0.08)] transition-all duration-300"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400/10 to-blue-600/10 border border-[--color-border] flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {item.icon}
+                </div>
+                <h3 className="text-lg font-bold text-[--color-text-primary] mb-2">{item.title}</h3>
+                <p className="text-sm text-[--color-text-secondary] leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
-          <div className="products-cta">
-            <Link to="/productos" className="btn btn-primary">
-              Ver todos los productos
-            </Link>
+        </div>
+      </section>
+
+      {/* ─── PRICING ──────────────────────────────────────────── */}
+      <section className="py-28 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <p className="text-xs font-bold tracking-[0.15em] uppercase text-cyan-500 mb-4">
+              Planes simples
+            </p>
+            <h2 className="text-4xl sm:text-5xl font-black text-[--color-text-primary] leading-tight">
+              Elegí cómo querés empezar
+            </h2>
+            <p className="mt-5 text-[--color-text-secondary] text-lg">
+              Sin costos ocultos, sin letra chica.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* One-time */}
+            <div className="rounded-[2rem] border border-[--color-border] bg-[--color-bg-card] p-10 hover:border-[--color-border-hover] transition-all duration-200">
+              <p className="text-xs font-bold tracking-[0.12em] uppercase text-[--color-text-muted] mb-6">
+                Pago único
+              </p>
+              <div className="flex items-end gap-2 mb-2">
+                <h3 className="text-6xl font-black text-[--color-text-primary] tracking-tight">
+                  $120k
+                </h3>
+              </div>
+              <p className="text-[--color-text-secondary] mb-10">
+                Ideal si querés tu página totalmente propia, sin pagos mensuales.
+              </p>
+
+              <ul className="space-y-3.5 mb-10">
+                {[
+                  'Sitio web profesional',
+                  'WhatsApp integrado',
+                  'Google Maps',
+                  'Hosting inicial',
+                  'Diseño responsive',
+                  'Entrega en 72hs',
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-3 text-sm text-[--color-text-primary]"
+                  >
+                    <div className="w-5 h-5 rounded-full border border-cyan-500/40 bg-cyan-500/10 flex items-center justify-center shrink-0">
+                      <svg
+                        className="w-2.5 h-2.5 text-cyan-500"
+                        fill="none"
+                        viewBox="0 0 12 12"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
+                      </svg>
+                    </div>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <Link
+                to="/contacto"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-[--color-border] bg-[--color-bg-elevated] hover:bg-[--color-bg-section] text-[--color-text-primary] font-semibold text-sm transition-all hover:-translate-y-0.5"
+              >
+                Consultar precio
+              </Link>
+            </div>
+
+            {/* Subscription ─ featured */}
+            <div className="relative rounded-[2rem] p-[1.5px] bg-gradient-to-br from-cyan-400 via-sky-400 to-blue-600 shadow-[0_24px_80px_rgba(6,182,212,0.25)]">
+              <div className="h-full rounded-[calc(2rem-1.5px)] bg-[--color-bg-card] p-10">
+                <div className="flex items-center justify-between mb-6">
+                  <p className="text-xs font-bold tracking-[0.12em] uppercase text-[--color-text-muted]">
+                    Suscripción mensual
+                  </p>
+                  <span className="px-3 py-1 rounded-full bg-gradient-to-r from-cyan-400/20 to-blue-600/20 border border-cyan-400/30 text-cyan-500 text-xs font-bold">
+                    Más elegido
+                  </span>
+                </div>
+
+                <div className="flex items-end gap-2 mb-2">
+                  <h3 className="text-6xl font-black text-[--color-text-primary] tracking-tight">
+                    $35k
+                  </h3>
+                  <span className="pb-2 text-[--color-text-secondary] text-sm">/mes</span>
+                </div>
+                <p className="text-[--color-text-secondary] mb-10">
+                  Menor inversión inicial y todo el mantenimiento incluido.
+                </p>
+
+                <ul className="space-y-3.5 mb-10">
+                  {[
+                    'Hosting incluido',
+                    'Dominio incluido',
+                    'Cambios simples ilimitados',
+                    'Soporte prioritario',
+                    'Backups automáticos',
+                    'Actualizaciones continuas',
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-3 text-sm text-[--color-text-primary]"
+                    >
+                      <div className="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shrink-0">
+                        <svg
+                          className="w-2.5 h-2.5 text-white"
+                          fill="none"
+                          viewBox="0 0 12 12"
+                          stroke="currentColor"
+                          strokeWidth={2.5}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
+                        </svg>
+                      </div>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  to="/contacto"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold text-sm outline-4 outline-cyan-300/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_8px_20px_rgba(6,182,212,0.3)] hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  Empezar ahora
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                    />
+                  </svg>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="cta">
-        <div className="cta-container">
-          <h2>¿Tenés una idea?</h2>
-          <p>Conversemos sobre tu próximo proyecto digital</p>
-          <Link to="/contacto" className="btn btn-primary btn-large">
-            Contactanos
-          </Link>
+      {/* ─── PRODUCTS ─────────────────────────────────────────── */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[--color-bg-section] border-y border-[--color-border]">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+            <div>
+              <p className="text-xs font-bold tracking-[0.15em] uppercase text-cyan-500 mb-4">
+                Productos
+              </p>
+              <h2 className="text-4xl font-black text-[--color-text-primary]">
+                Soluciones creadas por AppResuelve
+              </h2>
+            </div>
+            <Link
+              to="/productos"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[--color-text-secondary] hover:text-[--color-text-primary] transition-colors"
+            >
+              Ver todos
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                />
+              </svg>
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {products.map((product) => (
+              <div
+                key={product.id}
+                className="group rounded-[1.75rem] overflow-hidden border border-[--color-border] bg-[--color-bg-card] hover:-translate-y-1.5 hover:border-cyan-500/20 hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] transition-all duration-300"
+              >
+                <div className="aspect-video overflow-hidden bg-[--color-bg-section]">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+
+                <div className="p-7">
+                  <h3 className="text-xl font-bold text-[--color-text-primary] mb-1.5">
+                    {product.name}
+                  </h3>
+                  <p className="text-sm text-[--color-text-secondary] mb-6">{product.subtitle}</p>
+
+                  <Link
+                    to={`/productos/${product.id}`}
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-cyan-500 hover:text-cyan-400 transition-colors"
+                  >
+                    Ver más
+                    <svg
+                      className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                      />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CTA FINAL ────────────────────────────────────────── */}
+      <section className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/8 via-transparent to-blue-600/8" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-r from-cyan-400/10 to-blue-600/10 blur-[80px] rounded-full" />
+        </div>
+
+        {/* Decorative ring */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-[--color-border] opacity-30 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-[--color-border] opacity-20 pointer-events-none" />
+
+        <div className="relative max-w-3xl mx-auto text-center">
+          <p className="text-xs font-bold tracking-[0.15em] uppercase text-cyan-500 mb-6">
+            Empezá hoy
+          </p>
+          <h2 className="text-5xl sm:text-6xl font-black text-[--color-text-primary] leading-[1.0] tracking-tight">
+            Tu negocio puede verse mucho más profesional{' '}
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              esta semana
+            </span>
+          </h2>
+
+          <p className="mt-7 text-xl text-[--color-text-secondary] leading-relaxed max-w-xl mx-auto">
+            Te ayudamos a tener una presencia online moderna, rápida y lista para convertir visitas
+            en clientes.
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-4 mt-12">
+            <Link
+              to="/contacto"
+              className="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold text-lg outline-4 outline-cyan-300/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_12px_40px_rgba(6,182,212,0.35)] hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Hablar ahora
+              <svg
+                className="w-5 h-5 transition-transform group-hover:translate-x-0.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                />
+              </svg>
+            </Link>
+
+            <Link
+              to="/productos"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border border-[--color-border] bg-[--color-bg-card]/70 hover:bg-[--color-bg-elevated] hover:border-[--color-border-hover] backdrop-blur-xl font-semibold text-lg hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Ver trabajos
+            </Link>
+          </div>
         </div>
       </section>
     </div>

@@ -22,6 +22,7 @@ export const products = [
   {
     id: 'flavourlab',
     name: 'FlavourLab',
+    logo: '/logo-flavourlab.png',
     subtitle: 'Plataforma para Restaurantes',
     description:
       'Plataforma integral para restaurantes y empresas de alimentación. Incluye gestión de pedidos, inventario y experiencia del cliente.',
