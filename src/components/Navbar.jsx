@@ -24,6 +24,17 @@ function Navbar() {
     setMenuOpen(false)
   }, [location.pathname])
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [menuOpen])
+
   const isActive = (path) =>
     location.pathname === path
       ? 'bg-gradient-to-r from-cyan-400/15 to-blue-600/15 text-[--color-text-primary]'
@@ -232,6 +243,8 @@ function Navbar() {
             >
               Contacto
             </Link>
+
+            <ThemeToggle mobile />
           </div>
 
           {/* CTA */}
@@ -241,7 +254,7 @@ function Navbar() {
                 <p className="text-lg font-bold text-[--color-text-primary]">¿Necesitás una web?</p>
 
                 <p className="mt-2 text-sm leading-relaxed text-[--color-text-secondary]">
-                  Creamos páginas modernas para negocios reales.
+                  Creamos páginas profesionales para negocios reales.
                 </p>
 
                 <Link

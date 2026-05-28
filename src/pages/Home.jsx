@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { products } from '../data/productos'
+import MockCarousel from '../components/MockCarousel'
+import { mockSites } from '../utils/mockSites'
 
 function Home() {
   return (
@@ -130,67 +132,8 @@ function Home() {
               </div>
 
               {/* Simulated content */}
-              <div className="p-7 space-y-5">
-                {/* Hero card */}
-                <div className="rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 p-[1px] shadow-[0_8px_24px_rgba(6,182,212,0.2)]">
-                  <div className="rounded-2xl bg-[--color-bg-elevated] p-7">
-                    <div className="flex items-center justify-between gap-4">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-3">
-                          <div className="w-5 h-5 rounded bg-gradient-to-br from-cyan-400 to-blue-600" />
-                          <p className="text-xs font-semibold text-[--color-text-secondary] tracking-wide uppercase">
-                            Barbería Moderna
-                          </p>
-                        </div>
-                        <h3 className="text-2xl font-black text-[--color-text-primary] leading-tight">
-                          Reservá tu turno
-                          <br />
-                          online
-                        </h3>
-                        <div className="mt-5 flex gap-2.5">
-                          <div className="h-9 w-28 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 shadow-md" />
-                          <div className="h-9 w-20 rounded-xl border border-[--color-border] bg-[--color-bg-card]" />
-                        </div>
-                      </div>
-                      <div className="hidden sm:flex w-24 h-24 rounded-2xl bg-gradient-to-br from-cyan-400/30 to-blue-600/30 border border-cyan-400/20 items-center justify-center text-4xl">
-                        ✂️
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Feature mini-cards */}
-                <div className="grid grid-cols-3 gap-3">
-                  {[
-                    { icon: '⚡', label: 'Entrega rápida' },
-                    { icon: '📱', label: 'Responsive' },
-                    { icon: '💬', label: 'WhatsApp' },
-                  ].map((f) => (
-                    <div
-                      key={f.label}
-                      className="rounded-xl border border-[--color-border] bg-[--color-bg-section]/60 p-4 text-center"
-                    >
-                      <div className="text-xl mb-1.5">{f.icon}</div>
-                      <p className="text-[10px] font-semibold text-[--color-text-secondary]">
-                        {f.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Fake stat bar */}
-                <div className="rounded-xl border border-[--color-border] bg-[--color-bg-section]/40 p-4 flex items-center gap-4">
-                  <div className="flex-1 space-y-2">
-                    <div className="flex justify-between text-xs text-[--color-text-muted]">
-                      <span>Visitas este mes</span>
-                      <span className="text-cyan-500 font-bold">+38%</span>
-                    </div>
-                    <div className="h-1.5 rounded-full bg-[--color-border] overflow-hidden">
-                      <div className="h-full w-[68%] rounded-full bg-gradient-to-r from-cyan-400 to-blue-500" />
-                    </div>
-                  </div>
-                  <div className="text-2xl font-black text-[--color-text-primary]">2.4k</div>
-                </div>
+              <div className="h-[320px] lg:h-[360px]">
+                <MockCarousel sites={mockSites} />
               </div>
             </div>
           </div>
@@ -477,22 +420,51 @@ function Home() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-r from-cyan-400/10 to-blue-600/10 blur-[80px] rounded-full" />
         </div>
 
-        {/* Decorative ring */}
+        {/* Decorative circles - inner hard rings */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-[--color-border] opacity-30 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-[--color-border] opacity-20 pointer-events-none" />
+
+        {/* Outer hard rings - getting closer together as they go outward */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-[--color-border] opacity-15 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[720px] rounded-full border border-[--color-border] opacity-12 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[735px] h-[735px] rounded-full border border-[--color-border] opacity-10 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[745px] h-[745px] rounded-full border border-[--color-border] opacity-8 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[752px] h-[752px] rounded-full border border-[--color-border] opacity-6 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[758px] h-[758px] rounded-full border border-[--color-border] opacity-5 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[763px] h-[763px] rounded-full border border-[--color-border] opacity-4 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[767px] h-[767px] rounded-full border border-[--color-border] opacity-3 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[770px] h-[770px] rounded-full border border-[--color-border] opacity-2 pointer-events-none" />
+
+        {/* Gradient blobs */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] rounded-full bg-gradient-to-r from-cyan-400/5 to-blue-600/5 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150px] h-[150px] rounded-full bg-gradient-to-r from-cyan-400/8 to-blue-600/8 pointer-events-none" />
+        <div className="absolute top-[15%] left-[10%] w-[120px] h-[120px] rounded-full bg-cyan-400/10 blur-3xl pointer-events-none" />
+        <div className="absolute top-[20%] right-[12%] w-[100px] h-[100px] rounded-full bg-blue-500/12 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-[18%] left-[15%] w-[90px] h-[90px] rounded-full bg-cyan-400/15 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-[12%] right-[8%] w-[130px] h-[130px] rounded-full bg-blue-600/10 blur-3xl pointer-events-none" />
+        <div className="absolute top-[30%] left-[5%] w-[60px] h-[60px] rounded-full bg-cyan-400/8 blur-2xl pointer-events-none" />
+        <div className="absolute top-[35%] right-[5%] w-[70px] h-[70px] rounded-full bg-blue-500/10 blur-2xl pointer-events-none" />
+        <div className="absolute bottom-[30%] left-[8%] w-[55px] h-[55px] rounded-full bg-cyan-400/12 blur-2xl pointer-events-none" />
+        <div className="absolute bottom-[25%] right-[15%] w-[65px] h-[65px] rounded-full bg-blue-600/8 blur-2xl pointer-events-none" />
+        <div className="absolute top-[8%] left-[35%] w-[80px] h-[80px] rounded-full bg-cyan-400/6 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-[8%] right-[30%] w-[75px] h-[75px] rounded-full bg-blue-600/7 blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 left-[3%] -translate-y-1/2 w-[50px] h-[50px] rounded-full bg-cyan-400/10 blur-2xl pointer-events-none" />
+        <div className="absolute top-1/2 right-[3%] -translate-y-1/2 w-[45px] h-[45px] rounded-full bg-blue-500/12 blur-2xl pointer-events-none" />
+        <div className="absolute top-[45%] left-[5%] w-[35px] h-[35px] rounded-full bg-cyan-400/8 blur-xl pointer-events-none" />
+        <div className="absolute top-[55%] right-[8%] w-[40px] h-[40px] rounded-full bg-blue-600/10 blur-xl pointer-events-none" />
 
         <div className="relative max-w-3xl mx-auto text-center">
           <p className="text-xs font-bold tracking-[0.15em] uppercase text-cyan-500 mb-6">
             Empezá hoy
           </p>
-          <h2 className="text-5xl sm:text-6xl font-black text-[--color-text-primary] leading-[1.0] tracking-tight">
+          <h2 className="text-5xl sm:text-6xl font-black text-[--color-text-primary] leading-[1.0] tracking-tight text-center">
             Tu negocio puede verse mucho más profesional{' '}
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               esta semana
             </span>
           </h2>
 
-          <p className="mt-7 text-xl text-[--color-text-secondary] leading-relaxed max-w-xl mx-auto">
+          <p className="mt-7 text-xl text-[--color-text-secondary] leading-relaxed text-center">
             Te ayudamos a tener una presencia online moderna, rápida y lista para convertir visitas
             en clientes.
           </p>

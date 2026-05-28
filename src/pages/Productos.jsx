@@ -142,11 +142,11 @@ function Productos() {
               Soluciones a medida
             </div>
 
-            <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-[--color-text-primary] leading-tight max-w-4xl mx-auto">
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-[--color-text-primary] leading-tight text-center">
               ¿Tenés una idea o problema específico?
             </h2>
 
-            <p className="mt-6 text-lg sm:text-xl text-[--color-text-secondary] leading-relaxed max-w-3xl mx-auto">
+            <p className="mt-6 text-lg sm:text-xl text-[--color-text-secondary] leading-relaxed text-center">
               También desarrollamos soluciones personalizadas para automatizar procesos, mejorar
               flujos de trabajo y digitalizar negocios.
             </p>
