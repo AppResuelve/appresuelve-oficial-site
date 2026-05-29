@@ -62,10 +62,6 @@ function Contacto() {
           <div className="space-y-8">
             {/* info card */}
             <div className="rounded-[2.5rem] border border-[--color-border] bg-[--color-bg-card]/80 backdrop-blur-xl p-8 sm:p-10">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-white text-3xl shadow-[0_10px_40px_rgba(59,130,246,0.35)]">
-                🚀
-              </div>
-
               <h2 className="mt-8 text-3xl font-black tracking-tight text-[--color-text-primary]">
                 Soluciones rápidas y modernas
               </h2>
@@ -269,7 +265,7 @@ function Contacto() {
 
                     <button
                       type="submit"
-                      className="group relative w-full overflow-hidden px-8 py-5 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-bold text-lg outline-4 outline-cyan-300/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_10px_30px_rgba(59,130,246,0.35)] hover:-translate-y-0.5 transition-all duration-200"
+                      className="group relative w-full overflow-hidden px-8 py-3 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-bold text-lg outline-4 outline-cyan-300/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_10px_30px_rgba(59,130,246,0.35)] hover:-translate-y-0.5 transition-all duration-200"
                     >
                       <span className="relative z-10 flex items-center justify-center gap-3">
                         Enviar mensaje

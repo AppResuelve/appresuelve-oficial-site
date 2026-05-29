@@ -16,7 +16,7 @@ function MockCarousel({ sites }) {
 
   return (
     <div className="relative h-full w-full overflow-hidden">
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="sync">
         <motion.img
           key={currentIndex}
           src={current.image}

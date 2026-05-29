@@ -1,65 +1,6 @@
 import { Link } from 'react-router-dom'
-
-const services = [
-  {
-    id: 'web',
-    badge: 'Pago único o mensual',
-    title: 'Sitio Web',
-    subtitle: 'Más completo y escalable',
-    description:
-      'Sitios web más avanzados para negocios que necesitan varias páginas, administración de contenido o funcionalidades específicas.',
-    gradient: 'from-cyan-400 to-blue-600',
-    features: [
-      'Multipágina',
-      'Panel o backend opcional',
-      'Base de datos',
-      'Integraciones',
-      'Escalable',
-      'Mantenimiento opcional',
-    ],
-    plans: [
-      {
-        name: 'Pago Único',
-        price: 'Desde $280.000',
-        description: 'Desarrollo completo con entrega final y propiedad total del sitio.',
-      },
-      {
-        name: 'Suscripción',
-        price: '$60.000/mes',
-        description: 'Incluye hosting, mantenimiento y mejoras continuas.',
-      },
-    ],
-  },
-  {
-    id: 'landing',
-    badge: 'Pago único',
-    title: 'Landing Page',
-    subtitle: 'Ideal para empezar rápido',
-    description:
-      'Una página enfocada en mostrar tu negocio, generar confianza y convertir visitas en contactos o clientes.',
-    gradient: 'from-cyan-400 to-blue-600',
-    features: [
-      'Diseño moderno y responsive',
-      'Botón directo a WhatsApp',
-      'Optimizada para celulares',
-      'Formulario de contacto',
-      'Entrega rápida',
-      'Hosting opcional',
-    ],
-    plans: [
-      {
-        name: 'Landing Básica',
-        price: '$120.000',
-        description: 'Perfecta para negocios que necesitan presencia online simple y profesional.',
-      },
-      {
-        name: 'Landing Plus',
-        price: '$180.000',
-        description: 'Incluye más secciones, animaciones y enfoque en conversión.',
-      },
-    ],
-  },
-]
+import ServiceCarousel from '../components/ServiceCarousel'
+import ScheduleCall from '../components/ScheduleCall'
 
 function Servicios() {
   return (
@@ -87,136 +28,363 @@ function Servicios() {
         </div>
       </section>
 
-      {/* SERVICES */}
-      <section className="relative max-w-7xl mx-auto mt-24 space-y-12">
-        {services.map((service) => (
-          <div
-            key={service.id}
-            className={`group relative overflow-hidden rounded-[2.5rem] border border-[--color-border] bg-[--color-bg-card]/80 backdrop-blur-xl ${
-              service.id === 'web' ? 'outline-4 outline-cyan-300/60' : ''
-            }`}
-          >
-            {service.id === 'web' && (
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-transparent to-blue-600/20" />
-            )}
-
-            <div className="relative grid lg:grid-cols-[1.1fr_0.9fr]">
-              {/* LEFT */}
-              <div className="p-4 md:p-10 lg:p-14">
-                <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
-                  <h2 className="order-2 md:order-1 text-4xl md:text-5xl font-black tracking-tight text-[--color-text-primary] leading-tight">
-                    {service.title}
-                  </h2>
-                  <div className="order-1 md:order-2 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[--color-border] bg-[--color-bg-section]/70 text-sm text-[--color-text-secondary]">
-                    <span className="w-2 h-2 rounded-full bg-cyan-400" />
-                    {service.badge}
-                  </div>
-                </div>
-
-                <p className="mt-3 text-xl text-[--color-text-secondary]">{service.subtitle}</p>
-
-                <p className="mt-8 text-lg leading-relaxed text-[--color-text-secondary] max-w-2xl">
-                  {service.description}
-                </p>
-
-                {/* features */}
-                <div className="grid sm:grid-cols-2 gap-4 mt-10">
-                  {service.features.map((feature) => (
-                    <div
-                      key={feature}
-                      className="flex items-center gap-3 rounded-2xl border border-[--color-border] bg-[--color-bg-section]/50 p-4"
-                    >
-                      <div
-                        className={`w-8 h-8 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-[--color-text-primary] text-sm font-bold`}
-                      >
-                        ✓
-                      </div>
-
-                      <p className="text-sm text-[--color-text-secondary]">{feature}</p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 mt-8">
-                  <Link
-                    to="/contacto"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold outline-4 outline-cyan-300/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_10px_30px_rgba(59,130,246,0.35)] hover:-translate-y-0.5 transition-all duration-200"
-                  >
-                    Consultar
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"
-                      />
-                    </svg>
-                  </Link>
-
-                  <button className="w-full sm:w-auto px-7 py-4 rounded-2xl border border-[--color-border] bg-[--color-bg-section]/60 text-[--color-text-primary] font-semibold hover:border-cyan-500/40 transition-all">
-                    Ver ejemplos
-                  </button>
+      {/* LANDING PAGE */}
+      <section id="landing" className="relative max-w-7xl mx-auto mt-24">
+        <div className="group relative overflow-hidden rounded-[2.5rem] border border-[--color-border] bg-[--color-bg-card]/80 backdrop-blur-xl">
+          <div className="relative grid lg:grid-cols-[1.1fr_0.9fr]">
+            {/* LEFT */}
+            <div className="p-4 md:p-10 lg:p-14">
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
+                <h2 className="order-2 md:order-1 text-4xl md:text-5xl font-black tracking-tight text-[--color-text-primary] leading-tight">
+                  Landing Page
+                </h2>
+                <div className="order-1 md:order-2 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[--color-border] bg-[--color-bg-section]/70 text-sm text-[--color-text-secondary]">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400" />
+                  Pago único
                 </div>
               </div>
 
-              {/* RIGHT / plans */}
-              <div className="relative border-t lg:border-t-0 lg:border-l border-[--color-border] bg-[--color-bg-section]/30">
-                <div className="p-4 md:p-8 lg:p-12 h-full flex flex-col justify-center">
-                  <div>
-                    <p className="text-sm uppercase tracking-[0.2em] text-cyan-500 font-bold">
-                      Planes
-                    </p>
+              <p className="mt-3 text-xl text-[--color-text-secondary]">
+                Ideal para empezar rápido
+              </p>
 
-                    <h3 className="mt-4 text-3xl font-black text-[--color-text-primary]">
-                      Opciones disponibles
-                    </h3>
+              <p className="mt-8 text-lg leading-relaxed text-[--color-text-secondary] max-w-2xl">
+                Una página enfocada en mostrar tu negocio, generar confianza y convertir visitas en
+                contactos o clientes.
+              </p>
+
+              {/* features */}
+              <div className="grid sm:grid-cols-2 gap-4 mt-10">
+                {[
+                  'Diseño profesional y estilo personalizado',
+                  'Botón directo a WhatsApp o URL externo',
+                  'Optimizada para celulares',
+                  'Formulario de contacto',
+                  'Entrega en 24 hs',
+                  'Hosting y dominio por 1 año',
+                ].map((feature) => (
+                  <div
+                    key={feature}
+                    className="flex items-center gap-3 rounded-2xl border border-[--color-border] bg-[--color-bg-section]/50 p-4"
+                  >
+                    <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-[--color-text-primary] text-sm font-bold shrink-0">
+                      ✓
+                    </div>
+                    <p className="text-sm text-[--color-text-secondary]">{feature}</p>
                   </div>
+                ))}
+              </div>
 
-                  <div className="space-y-5 mt-10">
-                    {service.plans.map((plan) => (
-                      <div
-                        key={plan.name}
-                        className=" rounded-[2rem] border border-[--color-border] bg-[--color-bg-card]/70 backdrop-blur-xl p-4 sm:p-5"
-                      >
-                        <div className="flex flex-col items-start justify-between gap-4">
-                          <div>
-                            <h4 className="text-xl font-bold text-[--color-text-primary]">
-                              {plan.name}
-                            </h4>
+              {/* buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 mt-8">
+                <Link
+                  to="/contacto"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold outline-4 outline-cyan-300/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_10px_30px_rgba(59,130,246,0.35)] hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  Consultar
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </Link>
+                <a
+                  href="#landing-carousel"
+                  className="w-full sm:w-auto px-7 py-4 rounded-2xl border border-[--color-border] bg-[--color-bg-section]/60 text-[--color-text-primary] font-semibold hover:border-cyan-500/40 transition-all text-center"
+                >
+                  Ver ejemplos
+                </a>
+              </div>
+            </div>
 
-                            <p className="mt-3 text-[--color-text-secondary] leading-relaxed">
-                              {plan.description}
-                            </p>
-                          </div>
+            {/* RIGHT / plans */}
+            <div className="relative border-t lg:border-t-0 lg:border-l border-[--color-border] bg-[--color-bg-section]/30">
+              <div className="p-4 md:p-8 lg:p-12 h-full flex flex-col justify-center">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.2em] text-cyan-500 font-bold">
+                    Planes
+                  </p>
+                  <h3 className="mt-4 text-3xl font-black text-[--color-text-primary]">
+                    Opciones disponibles
+                  </h3>
+                </div>
 
-                          <div className="self-end shrink-0 px-4 py-2 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-bold outline-4 outline-cyan-300/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_8px_20px_rgba(59,130,246,0.25)]">
-                            {plan.price}
+                <div className="space-y-5 mt-10">
+                  {[
+                    {
+                      name: 'Landing Básica',
+                      price: '$30.000',
+                      desc: 'Perfecta para negocios que necesitan presencia online simple y profesional.',
+                    },
+                    {
+                      name: 'Landing Plus',
+                      price: '$60.000',
+                      desc: 'Incluye más secciones, animaciones y enfoque en conversión.',
+                    },
+                  ].map((plan) => (
+                    <div
+                      key={plan.name}
+                      className="rounded-[2rem] border border-[--color-border] bg-[--color-bg-card]/70 backdrop-blur-xl p-4 sm:p-5"
+                    >
+                      <div className="flex flex-col items-start justify-between gap-4">
+                        <div>
+                          <h4 className="text-xl font-bold text-[--color-text-primary]">
+                            {plan.name}
+                          </h4>
+                          <p className="mt-3 text-[--color-text-secondary] leading-relaxed">
+                            {plan.desc}
+                          </p>
+                        </div>
+                        <div className="self-end shrink-0 rounded-xl bg-gradient-to-r from-cyan-400/15 to-blue-600/15">
+                          <div className="px-4 py-2">
+                            <div className="text-sm font-bold text-[--color-text-primary]">
+                              {plan.price}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Carousel */}
+          <div id="landing-carousel" className="px-4 md:px-10 lg:px-14 pb-8">
+            <ServiceCarousel />
+          </div>
+        </div>
+      </section>
+
+      {/* SITIO WEB */}
+      <section id="sitio-web" className="relative max-w-7xl mx-auto mt-12">
+        <div className="group relative overflow-hidden rounded-[2.5rem] border border-[--color-border] bg-[--color-bg-card]/80 backdrop-blur-xl outline-4 outline-cyan-300/60">
+          <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-transparent to-blue-600/20" />
+
+          <div className="relative grid lg:grid-cols-[1.1fr_0.9fr] border-b">
+            {/* LEFT */}
+            <div className="p-4 md:p-10 lg:p-14">
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
+                <h2 className="order-2 md:order-1 text-4xl md:text-5xl font-black tracking-tight text-[--color-text-primary] leading-tight">
+                  Sitio Web
+                </h2>
+                <div className="order-1 md:order-2 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[--color-border] bg-[--color-bg-section]/70 text-sm text-[--color-text-secondary]">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400" />
+                  Pago único o mensual
+                </div>
+              </div>
+
+              <p className="mt-3 text-xl text-[--color-text-secondary]">
+                Varias páginas, escalable
+              </p>
+
+              <p className="mt-8 text-lg leading-relaxed text-[--color-text-secondary] max-w-2xl">
+                Sitios web con múltiples páginas para negocios que necesitan más estructura y
+                contenido.
+              </p>
+
+              {/* features */}
+              <div className="grid sm:grid-cols-2 gap-4 mt-10">
+                {[
+                  'Pagina de inicio, catálogo de productos o servicios, contacto',
+                  'Panel simple para editar precios y catálogo',
+                  'Conexión con WhatsApp y redes sociales',
+                  'Pedidos con carrito de compras termina en WhatsApp',
+                  'Escalable (se puede mejorar)',
+                  'Páginas adicionales por $6.000 cada una',
+                ].map((feature) => (
+                  <div
+                    key={feature}
+                    className="flex items-center gap-3 rounded-2xl border border-[--color-border] bg-[--color-bg-section]/50 p-4"
+                  >
+                    <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-[--color-text-primary] text-sm font-bold shrink-0">
+                      ✓
+                    </div>
+                    <p className="text-sm text-[--color-text-secondary]">{feature}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 mt-8">
+                <Link
+                  to="/contacto"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold outline-4 outline-cyan-300/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_10px_30px_rgba(59,130,246,0.35)] hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  Consultar
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </Link>
+                <a
+                  href="#sitio-web-carousel"
+                  className="w-full sm:w-auto px-7 py-4 rounded-2xl border border-[--color-border] bg-[--color-bg-section]/60 text-[--color-text-primary] font-semibold hover:border-cyan-500/40 transition-all text-center"
+                >
+                  Ver ejemplos
+                </a>
+              </div>
+            </div>
+
+            {/* RIGHT / plans */}
+            <div className="relative border-t lg:border-t-0 lg:border-l border-[--color-border] bg-[--color-bg-section]/30">
+              <div className="p-4 md:p-8 lg:p-12 h-full flex flex-col justify-center">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.2em] text-cyan-500 font-bold">
+                    Planes
+                  </p>
+                  <h3 className="mt-4 text-3xl font-black text-[--color-text-primary]">
+                    Opciones disponibles
+                  </h3>
+                </div>
+
+                <div className="space-y-5 mt-10">
+                  <div className="rounded-[2rem] border border-[--color-border] bg-[--color-bg-card]/70 backdrop-blur-xl p-4 sm:p-5">
+                    <div className="flex flex-col items-start justify-between gap-4">
+                      <div>
+                        <h4 className="text-xl font-bold text-[--color-text-primary]">
+                          Pago Único
+                        </h4>
+                        <p className="mt-3 text-[--color-text-secondary] leading-relaxed">
+                          Desarrollo completo con entrega final y propiedad total del sitio.
+                        </p>
+                      </div>
+                      <div className="self-end shrink-0 rounded-xl bg-gradient-to-r from-cyan-400/15 to-blue-600/15">
+                        <div className="px-4 py-2">
+                          <div className="text-sm font-bold text-[--color-text-primary]">
+                            Desde $100.000
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* note */}
-                  <div className="mt-8 rounded-2xl border border-dashed border-[--color-border] p-5">
-                    <p className="text-sm leading-relaxed text-[--color-text-secondary]">
-                      Los precios pueden variar según funcionalidades, integraciones o complejidad
-                      del proyecto.
-                    </p>
+                  <div className="rounded-[2rem] border border-[--color-border] bg-[--color-bg-card]/70 backdrop-blur-xl p-4 sm:p-5">
+                    <div className="flex flex-col items-start justify-between gap-4">
+                      <div>
+                        <h4 className="text-xl font-bold text-[--color-text-primary]">
+                          Suscripción
+                        </h4>
+                        <p className="mt-3 text-[--color-text-secondary] leading-relaxed">
+                          Incluye hosting, mantenimiento, hasta 2 cambios visuales y dominio
+                          (tudominio.com) x 1 año.
+                        </p>
+                      </div>
+                      <div className="self-end shrink-0 rounded-xl bg-gradient-to-r from-cyan-400/15 to-blue-600/15">
+                        <div className="px-4 py-2">
+                          <div className="text-sm font-bold text-[--color-text-primary]">
+                            Desde $25.000
+                          </div>
+                          <div className="text-xs text-[--color-text-secondary]">+ $25.000/mes</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        ))}
+
+          {/* Carousel */}
+          <div id="sitio-web-carousel" className="p-4 md:px-10 lg:px-14 pb-8">
+            <ServiceCarousel />
+          </div>
+        </div>
+      </section>
+
+      {/* SITIO WEB CUSTOM */}
+      <section id="webcustom" className="relative max-w-7xl mx-auto mt-12">
+        <div className="group relative overflow-hidden rounded-[2.5rem] border border-[--color-border] bg-[--color-bg-card]/80 backdrop-blur-xl">
+          <div className="relative grid lg:grid-cols-[1.1fr_0.9fr]">
+            {/* LEFT */}
+            <div className="p-4 md:p-10 lg:p-14">
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
+                <h2 className="order-2 md:order-1 text-4xl md:text-5xl font-black tracking-tight text-[--color-text-primary] leading-tight">
+                  Sitio Web Custom
+                </h2>
+                <div className="order-1 md:order-2 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[--color-border] bg-[--color-bg-section]/70 text-sm text-[--color-text-secondary]">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400" />
+                  Proyecto personalizado
+                </div>
+              </div>
+
+              <p className="mt-3 text-xl text-[--color-text-secondary]">Para proyectos únicos</p>
+
+              <p className="mt-8 text-lg leading-relaxed text-[--color-text-secondary] max-w-2xl">
+                Desarrollamos soluciones a medida para automatizar procesos, mejorar flujos de
+                trabajo y digitalizar negocios.
+              </p>
+
+              {/* features */}
+              <div className="grid sm:grid-cols-2 gap-4 mt-10">
+                {[
+                  'Funcionalidades a medida',
+                  'Integraciones con APIs',
+                  'Dashboards personalizados',
+                  'Automatizaciones',
+                  'Arquitectura personalizada',
+                  'Consultoría técnica',
+                ].map((feature) => (
+                  <div
+                    key={feature}
+                    className="flex items-center gap-3 rounded-2xl border border-[--color-border] bg-[--color-bg-section]/50 p-4"
+                  >
+                    <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-[--color-text-primary] text-sm font-bold shrink-0">
+                      ✓
+                    </div>
+                    <p className="text-sm text-[--color-text-secondary]">{feature}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* RIGHT / plans */}
+            <div className="relative border-t lg:border-t-0 lg:border-l border-[--color-border] bg-[--color-bg-section]/30">
+              <div className="p-4 md:p-8 lg:p-12 h-full flex flex-col justify-center">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.2em] text-cyan-500 font-bold">
+                    Planes
+                  </p>
+                  <h3 className="mt-4 text-3xl font-black text-[--color-text-primary]">
+                    Opciones disponibles
+                  </h3>
+                </div>
+
+                <div className="space-y-5 mt-10">
+                  <div className="rounded-[2rem] border border-[--color-border] bg-[--color-bg-card]/70 backdrop-blur-xl p-4 sm:p-5">
+                    <div className="flex flex-col items-start justify-between gap-4">
+                      <div>
+                        <h4 className="text-xl font-bold text-[--color-text-primary]">
+                          Agendar llamada
+                        </h4>
+                        <p className="mt-3 text-[--color-text-secondary] leading-relaxed">
+                          Hablamos sobre tu proyecto y te cotizamos sin compromiso.
+                        </p>
+                      </div>
+                      <div className="self-end shrink-0">
+                        <ScheduleCall />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* CTA */}
       <section className="max-w-7xl mx-auto mt-24">
         <div className="relative overflow-hidden rounded-[3rem] border border-[--color-border]">
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-transparent to-blue-600/20" />
-
           <div className="relative px-8 py-16 sm:px-14 sm:py-20 text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[--color-border] bg-[--color-bg-card]/60 backdrop-blur-xl text-sm text-[--color-text-secondary] mb-8">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />

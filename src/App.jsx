@@ -10,12 +10,26 @@ import Contacto from './pages/Contacto'
 import Servicios from './pages/Servicios'
 import './index.css'
 
-function ScrollToTop() {
+function ScrollHandler() {
   const location = useLocation()
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [location.pathname])
+    if (location.hash) {
+      setTimeout(() => {
+        const id = location.hash.substring(1)
+        const el = document.getElementById(id)
+        if (el) {
+          const offset = 120
+          const top = el.getBoundingClientRect().top + window.scrollY - offset
+          window.scrollTo({ top, behavior: 'smooth' })
+        } else {
+          window.scrollTo(0, 0)
+        }
+      }, 200)
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [location.pathname, location.hash, location.search])
 
   return null
 }
@@ -23,7 +37,7 @@ function ScrollToTop() {
 function App() {
   return (
     <Router>
-      <ScrollToTop />
+      <ScrollHandler />
       <div className="app">
         <Navbar />
         <main className="main-content">

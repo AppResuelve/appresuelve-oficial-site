@@ -135,11 +135,14 @@ function Footer() {
 
           {/* cta */}
           <div>
-            <div className="rounded-[2rem] p-[1px] bg-gradient-to-br from-cyan-400 to-blue-600 shadow-[0_20px_60px_rgba(59,130,246,0.2)]">
+            <div className="relative rounded-[2rem] overflow-hidden p-[1px] shadow-[0_20px_60px_rgba(59,130,246,0.2)]">
+              <div className="absolute  inset-0 bg-gradient-to-br from-cyan-400/20 via-transparent to-blue-600/20" />
+
               <div className="rounded-[2rem] bg-[--color-bg-card] p-8">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-white text-2xl">
+                <div className="absolute top-0 left-0 w-20 h-20 rounded-2xl text-5xl opacity-60">
                   🚀
                 </div>
+                <div className="absolute bottom-10 right-3 w-20 h-20 rounded-2xl text-6xl">🚀</div>
 
                 <h4 className="mt-6 text-2xl font-black text-[--color-text-primary] leading-tight">
                   ¿Tu negocio todavía no tiene web?

@@ -113,9 +113,10 @@ function Home() {
                 <span className="w-3 h-3 rounded-full bg-red-400/90" />
                 <span className="w-3 h-3 rounded-full bg-yellow-400/90" />
                 <span className="w-3 h-3 rounded-full bg-green-400/90" />
-                <div className="ml-3 flex-1 h-8 rounded-lg bg-[--color-bg-base] border border-[--color-border] flex items-center px-3.5 gap-2 text-xs text-[--color-text-muted]">
+                <div className="ml-3 flex-1 h-8 rounded-lg bg-[--color-bg-base] border border-[--color-border] flex items-center px-3.5 justify-between text-xs text-[--color-text-muted]">
+                  <span>tunegocio.com</span>
                   <svg
-                    className="w-3 h-3 shrink-0 opacity-60"
+                    className="w-3.5 h-3.5 shrink-0 opacity-60"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -124,10 +125,9 @@ function Home() {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                     />
                   </svg>
-                  tunegocio.com
                 </div>
               </div>
 
@@ -339,13 +339,13 @@ function Home() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
             <div>
               <p className="text-xs font-bold tracking-[0.15em] uppercase text-cyan-500 mb-4">
-                Productos
+                Productos Propios
               </p>
               <h2 className="text-4xl font-black text-[--color-text-primary]">
                 Soluciones creadas por AppResuelve
               </h2>
             </div>
-            <Link
+            {/* <Link
               to="/productos"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-[--color-text-secondary] hover:text-[--color-text-primary] transition-colors"
             >
@@ -363,7 +363,7 @@ function Home() {
                   d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
                 />
               </svg>
-            </Link>
+            </Link> */}
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

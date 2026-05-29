@@ -6,6 +6,8 @@ import { ThemeToggle } from './ThemeToggle'
 function Navbar() {
   const location = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [mobileServiciosOpen, setMobileServiciosOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -22,7 +24,8 @@ function Navbar() {
 
   useEffect(() => {
     setMenuOpen(false)
-  }, [location.pathname])
+    setDropdownOpen(false)
+  }, [location.pathname, location.hash])
 
   useEffect(() => {
     if (menuOpen) {
@@ -35,10 +38,27 @@ function Navbar() {
     }
   }, [menuOpen])
 
+  useEffect(() => {
+    if (!dropdownOpen) return
+
+    const handleClickOutside = (e) => {
+      if (!e.target.closest('[data-dropdown-trigger]')) {
+        setDropdownOpen(false)
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [dropdownOpen])
+
   const isActive = (path) =>
     location.pathname === path
       ? 'bg-gradient-to-r from-cyan-400/15 to-blue-600/15 text-[--color-text-primary]'
       : 'text-[--color-text-secondary]'
+
+  const isServiceActive = () => {
+    return location.pathname === '/servicios'
+  }
 
   return (
     <>
@@ -77,18 +97,79 @@ function Navbar() {
                   aria-label="Inicio"
                 >
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                    />
                   </svg>
                 </Link>
 
-                <Link
-                  to="/servicios"
-                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all hover:bg-[--color-bg-elevated] ${isActive(
-                    '/servicios'
-                  )}`}
-                >
-                  Servicios
-                </Link>
+                {/* Servicios dropdown */}
+                <div className="relative cursor-pointer">
+                  <button
+                    data-dropdown-trigger
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                    className={`px-4 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-1 cursor-pointer ${
+                      isServiceActive()
+                        ? 'bg-gradient-to-r from-cyan-400/15 to-blue-600/15 text-[--color-text-primary]'
+                        : 'text-[--color-text-secondary] hover:bg-[--color-bg-elevated]'
+                    }`}
+                  >
+                    Servicios
+                    <svg
+                      className={`w-4 h-4 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                  {/* Dropdown menu */}
+                  {dropdownOpen && (
+                    <div
+                      className="absolute top-full left-0 mt-4 w-56 rounded-2xl border border-[--color-border] shadow-[0_10px_40px_rgba(0,0,0,0.12)] overflow-hidden z-50"
+                      style={{ backgroundColor: 'var(--color-bg-elevated)' }}
+                      onClick={() => setDropdownOpen(false)}
+                    >
+                      <div className="p-2 flex flex-col gap-1">
+                        <Link
+                          to="/servicios"
+                          className={`block px-4 py-3 text-sm transition-colors rounded-xl ${
+                            location.pathname === '/servicios' && !location.hash
+                              ? 'bg-gradient-to-r from-cyan-400/15 to-blue-600/15 text-[--color-text-primary]'
+                              : 'text-[--color-text-secondary] hover:bg-[--color-bg-elevated]'
+                          }`}
+                        >
+                          Todos los servicios
+                        </Link>
+                        <Link
+                          to="/servicios#landing"
+                          className={`block px-4 py-3 text-sm transition-colors rounded-xl ${
+                            location.pathname === '/servicios' && location.hash === '#landing'
+                              ? 'bg-gradient-to-r from-cyan-400/15 to-blue-600/15 text-[--color-text-primary]'
+                              : 'text-[--color-text-secondary] hover:bg-[--color-bg-elevated]'
+                          }`}
+                        >
+                          Landing Page
+                        </Link>
+                        <Link
+                          to="/servicios#sitio-web"
+                          className={`block px-4 py-3 text-sm transition-colors rounded-xl ${
+                            location.pathname === '/servicios' && location.hash === '#sitio-web'
+                              ? 'bg-gradient-to-r from-cyan-400/15 to-blue-600/15 text-[--color-text-primary]'
+                              : 'text-[--color-text-secondary] hover:bg-[--color-bg-elevated]'
+                          }`}
+                        >
+                          Sitio Web
+                        </Link>
+                      </div>
+                    </div>
+                  )}
+                </div>
 
                 <Link
                   to="/productos"
@@ -115,7 +196,7 @@ function Navbar() {
                 to="/contacto"
                 className="ml-2 inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold outline-4 outline-cyan-300/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_8px_20px_rgba(59,130,246,0.35)] hover:-translate-y-0.5 transition-all duration-200"
               >
-                Empezar
+                Presupuestar
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     strokeLinecap="round"
@@ -131,7 +212,7 @@ function Navbar() {
             <div className="md:hidden flex items-center gap-3">
               <Link
                 to="/servicios"
-                className="px-4 py-2 rounded-xl text-sm font-semibold text-[--color-text-secondary] hover:text-[--color-text-primary] transition-colors"
+                className="px-4 py-2 rounded-xl text-sm font-semibold text-[--color-text-secondary] hover:text-[--color-text-primary] transition-colors cursor-pointer"
               >
                 Servicios
               </Link>
@@ -211,16 +292,62 @@ function Navbar() {
               Inicio
             </Link>
 
-            <Link
-              to="/servicios"
-              className={`px-5 py-4 rounded-2xl text-base font-semibold transition-all ${
-                location.pathname === '/servicios'
-                  ? 'bg-gradient-to-r from-cyan-400/15 to-blue-600/15 text-[--color-text-primary]'
-                  : 'text-[--color-text-secondary]'
-              }`}
-            >
-              Servicios
-            </Link>
+            {/* Servicios accordion */}
+            <div>
+              <button
+                onClick={() => setMobileServiciosOpen(!mobileServiciosOpen)}
+                className={`w-full px-5 py-4 rounded-2xl text-base font-semibold transition-all flex items-center justify-between cursor-pointer ${
+                  location.pathname === '/servicios'
+                    ? 'bg-gradient-to-r from-cyan-400/15 to-blue-600/15 text-[--color-text-primary]'
+                    : 'text-[--color-text-secondary]'
+                }`}
+              >
+                <span>Servicios</span>
+                <svg
+                  className={`w-5 h-5 transition-transform ${mobileServiciosOpen ? 'rotate-180' : ''}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {mobileServiciosOpen && (
+                <div className="ml-4 mt-2 flex flex-col gap-1">
+                  <Link
+                    to="/servicios"
+                    className={`px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                      location.pathname === '/servicios' && !location.hash
+                        ? 'bg-gradient-to-r from-cyan-400/15 to-blue-600/15 text-[--color-text-primary]'
+                        : 'text-[--color-text-secondary]'
+                    }`}
+                  >
+                    Todos los servicios
+                  </Link>
+                  <Link
+                    to="/servicios#landing"
+                    className={`px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                      location.hash === '#landing'
+                        ? 'bg-gradient-to-r from-cyan-400/15 to-blue-600/15 text-[--color-text-primary]'
+                        : 'text-[--color-text-secondary]'
+                    }`}
+                  >
+                    Landing Page
+                  </Link>
+                  <Link
+                    to="/servicios#sitio-web"
+                    className={`px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                      location.hash === '#sitio-web'
+                        ? 'bg-gradient-to-r from-cyan-400/15 to-blue-600/15 text-[--color-text-primary]'
+                        : 'text-[--color-text-secondary]'
+                    }`}
+                  >
+                    Sitio Web
+                  </Link>
+                </div>
+              )}
+            </div>
 
             <Link
               to="/productos"
