@@ -29,36 +29,18 @@ function Productos() {
 
       {/* PRODUCTS */}
       <section className="max-w-7xl mx-auto mt-24 space-y-10">
-        {products.map((product, index) => (
+        {products.map((product) => (
           <div
             key={product.id}
-            className="group relative rounded-[2.5rem] border border-[--color-border] bg-[--color-bg-card]/80 backdrop-blur-xl overflow-hidden hover:-translate-y-1 transition-all duration-300"
+            className="group relative rounded-[2.5rem] border border-[--color-border] bg-[--color-bg-card]/80 backdrop-blur-xl"
           >
-            {/* glow */}
-            <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              style={{
-                background: `radial-gradient(circle at top right, ${product.color}15, transparent 40%)`,
-              }}
-            />
-
-            <div className="relative grid lg:grid-cols-2">
+            <div className="relative grid lg:grid-cols-2 p-2">
               {/* content */}
-              <div className="p-8 sm:p-10 lg:p-14 flex flex-col justify-center">
-                <div className="flex items-center gap-4 mb-8">
-                  <div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-lg"
-                    style={{
-                      background: `linear-gradient(135deg, ${product.color}, ${product.color}99)`,
-                    }}
-                  >
-                    {String(index + 1).padStart(2, '0')}
-                  </div>
-
-                  <div className="h-px flex-1 bg-gradient-to-r from-[--color-border] to-transparent" />
-                </div>
-
-                <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[--color-text-primary] leading-tight">
+              <div className="p-6 sm:p-8 lg:p-12 flex flex-col justify-center">
+                <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[--color-text-primary] leading-tight flex items-center gap-3">
+                  {product.logo && (
+                    <img src={product.logo} alt="" className="w-10 h-10 object-contain" />
+                  )}
                   {product.name}
                 </h2>
 
@@ -85,42 +67,38 @@ function Productos() {
                   <div className="rounded-2xl border border-[--color-border] bg-[--color-bg-section]/50 p-5">
                     <p className="text-sm text-[--color-text-muted]">Tipo</p>
 
-                    <p className="mt-2 font-bold text-[--color-text-primary]">Solución digital</p>
+                    <p className="mt-2 font-bold text-[--color-text-primary]">{product.type}</p>
                   </div>
 
                   <div className="rounded-2xl border border-[--color-border] bg-[--color-bg-section]/50 p-5">
                     <p className="text-sm text-[--color-text-muted]">Estado</p>
 
-                    <p className="mt-2 font-bold text-emerald-500">Activo</p>
+                    <p className="mt-2 font-bold text-emerald-500">{product.state}</p>
                   </div>
                 </div>
               </div>
 
               {/* image */}
-              <div className="relative min-h-[320px] lg:min-h-full">
-                {/* overlay */}
-                <div
-                  className="absolute inset-0 z-10"
-                  style={{
-                    background: `linear-gradient(135deg, ${product.color}15, transparent 50%)`,
-                  }}
-                />
-
+              <div className="relative min-h-[320px] lg:min-h-full rounded-4xl overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover rounded-4xl transition-transform duration-700"
                 />
 
-                {/* floating badge */}
-                <div className="absolute top-6 right-6 z-20">
-                  <div className="px-4 py-2 rounded-full border border-white/10 bg-black/30 backdrop-blur-xl text-white text-sm">
-                    AppResuelve
-                  </div>
-                </div>
-
-                {/* bottom gradient */}
-                <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/40 to-transparent" />
+                {product.id === 'flavourlab' && (
+                  <a
+                    href="https://flavourlab.pro"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute top-4 right-4 z-20 flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/30 backdrop-blur-xl text-white text-sm hover:bg-black/50 transition-colors"
+                  >
+                    Visitar
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </a>
+                )}
               </div>
             </div>
           </div>

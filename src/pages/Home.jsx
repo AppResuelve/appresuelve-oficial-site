@@ -190,144 +190,122 @@ function Home() {
         </div>
       </section>
 
-      {/* ─── PRICING ──────────────────────────────────────────── */}
+      {/* ─── SERVICES ─────────────────────────────────────────── */}
       <section className="py-28 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-xs font-bold tracking-[0.15em] uppercase text-cyan-500 mb-4">
-              Planes simples
-            </p>
-            <h2 className="text-4xl sm:text-5xl font-black text-[--color-text-primary] leading-tight">
-              Elegí cómo querés empezar
-            </h2>
-            <p className="mt-5 text-[--color-text-secondary] text-lg">
-              Sin costos ocultos, sin letra chica.
-            </p>
-          </div>
+          <p className="text-xs font-bold tracking-[0.15em] uppercase text-cyan-500 mb-4">
+            Servicios
+          </p>
+          <h2 className="text-4xl sm:text-5xl font-black text-[--color-text-primary] leading-tight">
+            Soluciones pensadas para negocios reales
+          </h2>
+          <p className="mt-5 text-[--color-text-secondary] text-lg max-w-2xl">
+            Desde páginas simples hasta catálogos con pedidos por WhatsApp.
+          </p>
 
-          <div className="grid lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {/* One-time */}
-            <div className="rounded-[2rem] border border-[--color-border] bg-[--color-bg-card] p-10 hover:border-[--color-border-hover] transition-all duration-200">
-              <p className="text-xs font-bold tracking-[0.12em] uppercase text-[--color-text-muted] mb-6">
-                Pago único
-              </p>
-              <div className="flex items-end gap-2 mb-2">
-                <h3 className="text-6xl font-black text-[--color-text-primary] tracking-tight">
-                  $120k
-                </h3>
+          <div className="grid lg:grid-cols-3 gap-6 mt-16">
+            {/* Card 1: Landing Page */}
+            <div className="group rounded-[2rem] border border-[--color-border] bg-[--color-bg-card] p-8 hover:border-cyan-500/30 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(6,182,212,0.08)] transition-all duration-300">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400/10 to-blue-600/10 border border-[--color-border] flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                🎯
               </div>
-              <p className="text-[--color-text-secondary] mb-10">
-                Ideal si querés tu página totalmente propia, sin pagos mensuales.
+              <p className="text-xs font-bold uppercase tracking-wide text-cyan-500 mb-3">
+                Objetivo: convertir rápido
               </p>
-
-              <ul className="space-y-3.5 mb-10">
-                {[
-                  'Sitio web profesional',
-                  'WhatsApp integrado',
-                  'Google Maps',
-                  'Hosting inicial',
-                  'Diseño responsive',
-                  'Entrega en 72hs',
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-3 text-sm text-[--color-text-primary]"
-                  >
-                    <div className="w-5 h-5 rounded-full border border-cyan-500/40 bg-cyan-500/10 flex items-center justify-center shrink-0">
-                      <svg
-                        className="w-2.5 h-2.5 text-cyan-500"
-                        fill="none"
-                        viewBox="0 0 12 12"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
-                      </svg>
-                    </div>
+              <h3 className="text-2xl font-black text-[--color-text-primary] mb-4">
+                Landing Page
+              </h3>
+              <p className="text-[--color-text-secondary] leading-relaxed mb-8">
+                Ideal para mostrar tu negocio, servicios y contacto en una sola página profesional.
+              </p>
+              <ul className="space-y-2 mb-8">
+                {['WhatsApp', 'Maps', 'Responsive', 'Redes'].map((item) => (
+                  <li key={item} className="flex items-center gap-2 text-sm text-[--color-text-secondary]">
+                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
                     {item}
                   </li>
                 ))}
               </ul>
-
               <Link
-                to="/contacto"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-[--color-border] bg-[--color-bg-elevated] hover:bg-[--color-bg-section] text-[--color-text-primary] font-semibold text-sm transition-all hover:-translate-y-0.5"
+                to="/servicios#sitio-web"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-500 hover:text-cyan-400 transition-colors"
               >
-                Consultar precio
+                Ver servicio
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
               </Link>
             </div>
 
-            {/* Subscription ─ featured */}
-            <div className="relative rounded-[2rem] p-[1.5px] bg-gradient-to-br from-cyan-400 via-sky-400 to-blue-600 shadow-[0_24px_80px_rgba(6,182,212,0.25)]">
-              <div className="h-full rounded-[calc(2rem-1.5px)] bg-[--color-bg-card] p-10">
-                <div className="flex items-center justify-between mb-6">
-                  <p className="text-xs font-bold tracking-[0.12em] uppercase text-[--color-text-muted]">
-                    Suscripción mensual
-                  </p>
+            {/* Card 2: Catálogo WhatsApp - Destacada */}
+            <div className="relative rounded-[2rem] p-[1.5px] bg-gradient-to-br from-cyan-400 via-sky-400 to-blue-600 shadow-[0_24px_80px_rgba(6,182,212,0.25)] lg:row-span-1">
+              <div className="h-full rounded-[calc(2rem-1.5px)] bg-[--color-bg-card] p-8 flex flex-col">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400/20 to-blue-600/20 flex items-center justify-center text-2xl">
+                    🛒
+                  </div>
                   <span className="px-3 py-1 rounded-full bg-gradient-to-r from-cyan-400/20 to-blue-600/20 border border-cyan-400/30 text-cyan-500 text-xs font-bold">
-                    Más elegido
+                    Más pedido
                   </span>
                 </div>
-
-                <div className="flex items-end gap-2 mb-2">
-                  <h3 className="text-6xl font-black text-[--color-text-primary] tracking-tight">
-                    $35k
-                  </h3>
-                  <span className="pb-2 text-[--color-text-secondary] text-sm">/mes</span>
-                </div>
-                <p className="text-[--color-text-secondary] mb-10">
-                  Menor inversión inicial y todo el mantenimiento incluido.
+                <p className="text-xs font-bold uppercase tracking-wide text-cyan-500 mb-3">
+                  Objetivo: vender mucho más
                 </p>
-
-                <ul className="space-y-3.5 mb-10">
-                  {[
-                    'Hosting incluido',
-                    'Dominio incluido',
-                    'Cambios simples ilimitados',
-                    'Soporte prioritario',
-                    'Backups automáticos',
-                    'Actualizaciones continuas',
-                  ].map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-center gap-3 text-sm text-[--color-text-primary]"
-                    >
-                      <div className="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shrink-0">
-                        <svg
-                          className="w-2.5 h-2.5 text-white"
-                          fill="none"
-                          viewBox="0 0 12 12"
-                          stroke="currentColor"
-                          strokeWidth={2.5}
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
-                        </svg>
-                      </div>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
+                <h3 className="text-2xl font-black text-[--color-text-primary] mb-4">
+                  Catálogo con pedidos WhatsApp
+                </h3>
+                <p className="text-[--color-text-secondary] leading-relaxed mb-6 flex-1">
+                  Mostrá productos y recibí pedidos sin necesidad de ecommerce complejo.
+                </p>
+                <div className="p-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 mb-6">
+                  <p className="text-sm font-bold text-cyan-500">Vende mucho más</p>
+                  <p className="text-xs text-[--color-text-secondary] mt-1">
+                    El cliente entiende: vendo, recibo pedidos, más simple.
+                  </p>
+                </div>
                 <Link
-                  to="/contacto"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold text-sm outline-4 outline-cyan-300/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_8px_20px_rgba(6,182,212,0.3)] hover:-translate-y-0.5 transition-all duration-200"
+                  to="/servicios#sitio-web"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold text-sm outline-4 outline-cyan-300/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_8px_20px_rgba(6,182,212,0.3)] hover:-translate-y-0.5 transition-all duration-200"
                 >
-                  Empezar ahora
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2.5}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                    />
+                  Ver servicio
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                   </svg>
                 </Link>
               </div>
+            </div>
+
+            {/* Card 3: Sitio Web Completo */}
+            <div className="group rounded-[2rem] border border-[--color-border] bg-[--color-bg-card] p-8 hover:border-cyan-500/30 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(6,182,212,0.08)] transition-all duration-300">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400/10 to-blue-600/10 border border-[--color-border] flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                🌐
+              </div>
+              <p className="text-xs font-bold uppercase tracking-wide text-cyan-500 mb-3">
+                Objetivo: más presencia
+              </p>
+              <h3 className="text-2xl font-black text-[--color-text-primary] mb-4">
+                Sitio Web Completo
+              </h3>
+              <p className="text-[--color-text-secondary] leading-relaxed mb-8">
+                Multipágina, secciones personalizadas y más presencia online para tu marca.
+              </p>
+              <ul className="space-y-2 mb-8">
+                {['Multipágina', 'Secciones custom', 'Más presencia'].map((item) => (
+                  <li key={item} className="flex items-center gap-2 text-sm text-[--color-text-secondary]">
+                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                to="/servicios#sitio-web"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-500 hover:text-cyan-400 transition-colors"
+              >
+                Ver servicio
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </Link>
             </div>
           </div>
         </div>
@@ -387,7 +365,7 @@ function Home() {
                   <p className="text-sm text-[--color-text-secondary] mb-6">{product.subtitle}</p>
 
                   <Link
-                    to={`/productos/${product.id}`}
+                    to="/productos"
                     className="inline-flex items-center gap-1.5 text-sm font-semibold text-cyan-500 hover:text-cyan-400 transition-colors"
                   >
                     Ver más

@@ -75,6 +75,13 @@ function Footer() {
               </Link>
 
               <Link
+                to="/servicios#sitio-web"
+                className="text-[--color-text-secondary] hover:text-[--color-text-primary] transition-colors"
+              >
+                Sitios Web
+              </Link>
+
+              <Link
                 to="/productos"
                 className="text-[--color-text-secondary] hover:text-[--color-text-primary] transition-colors"
               >
@@ -180,15 +187,6 @@ function Footer() {
               className="text-[--color-text-secondary] hover:text-cyan-500 transition-colors"
             >
               Instagram
-            </a>
-
-            <a
-              href={company.social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[--color-text-secondary] hover:text-cyan-500 transition-colors"
-            >
-              LinkedIn
             </a>
 
             <a

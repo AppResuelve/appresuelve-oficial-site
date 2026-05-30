@@ -14,7 +14,7 @@ export default function ScheduleCall() {
       data-cal-namespace="webcustom"
       data-cal-link="flavourlab-appresuelve/webcustom"
       data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-      className="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold outline-4 outline-cyan-300/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_10px_30px_rgba(59,130,246,0.35)] hover:-translate-y-0.5 transition-all duration-200"
+      className="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold outline-4 outline-cyan-300/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_10px_30px_rgba(59,130,246,0.35)] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
     >
       Agendar gratis
       <svg

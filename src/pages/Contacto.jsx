@@ -26,13 +26,7 @@ function Contacto() {
   }
 
   return (
-    <div className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* background */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-120px] left-[-120px] w-[320px] h-[320px] rounded-full bg-cyan-400/10 blur-3xl" />
-        <div className="absolute bottom-[-120px] right-[-120px] w-[320px] h-[320px] rounded-full bg-blue-600/10 blur-3xl" />
-      </div>
-
+    <div className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8">
       {/* HERO */}
       <section className="relative max-w-7xl mx-auto">
         <div className="max-w-4xl">
@@ -133,15 +127,6 @@ function Contacto() {
                   className="px-5 py-3 rounded-2xl border border-[--color-border] hover:border-cyan-500/40 text-[--color-text-secondary] hover:text-[--color-text-primary] transition-all"
                 >
                   Instagram
-                </a>
-
-                <a
-                  href={company.social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-3 rounded-2xl border border-[--color-border] hover:border-cyan-500/40 text-[--color-text-secondary] hover:text-[--color-text-primary] transition-all"
-                >
-                  LinkedIn
                 </a>
 
                 <a

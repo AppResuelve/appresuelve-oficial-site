@@ -5,7 +5,6 @@ import Footer from './components/Footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
 import Home from './pages/Home'
 import Productos from './pages/Productos'
-import ProductoDetalle from './pages/ProductoDetalle'
 import Contacto from './pages/Contacto'
 import Servicios from './pages/Servicios'
 import './index.css'
@@ -45,7 +44,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/productos" element={<Productos />} />
-            <Route path="/productos/:id" element={<ProductoDetalle />} />
             <Route path="/contacto" element={<Contacto />} />
           </Routes>
         </main>

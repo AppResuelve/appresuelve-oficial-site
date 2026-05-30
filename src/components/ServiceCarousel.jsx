@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 
 const examples = [
   {
@@ -64,7 +63,7 @@ function ServiceCarousel() {
         {/* Flecha izquierda */}
         <button
           onClick={prev}
-          className="hidden md:flex shrink-0 w-12 h-12 rounded-2xl border border-[--color-border] bg-[--color-bg-card] items-center justify-center text-[--color-text-primary] hover:bg-[--color-bg-elevated] transition-colors"
+          className="hidden md:flex shrink-0 w-12 h-12 rounded-2xl border border-[--color-border] bg-[--color-bg-card] items-center justify-center text-[--color-text-primary] hover:bg-[--color-bg-elevated] transition-colors cursor-pointer"
           aria-label="Anterior"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -78,26 +77,24 @@ function ServiceCarousel() {
         </button>
 
         {/* Contenido del carousel */}
-        <div className="flex-1 relative overflow-hidden rounded-3xl">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
-              className="grid md:grid-cols-[1fr_1.2fr] gap-0"
+        <div className="flex-1 relative overflow-hidden rounded-3xl min-h-[420px] md:min-h-[480px]">
+          {examples.map((example, idx) => (
+            <div
+              key={example.name}
+              className={`absolute inset-0 grid md:grid-cols-[1fr_1.2fr] transition-opacity duration-400 ${
+                idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+              }`}
             >
               {/* Info a la izquierda */}
               <div className="p-6 md:p-8 flex flex-col justify-center">
                 <p className="text-xs md:text-sm uppercase tracking-[0.15em] text-cyan-500 font-bold mb-2 md:mb-3">
-                  Ejemplo {currentIndex + 1} de {examples.length}
+                  Ejemplo {idx + 1} de {examples.length}
                 </p>
                 <h3 className="text-xl md:text-3xl font-black text-[--color-text-primary]">
-                  {current.name}
+                  {example.name}
                 </h3>
                 <ul className="mt-4 md:mt-6 space-y-2 md:space-y-3">
-                  {current.items.map((item, i) => (
+                  {example.items.map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm text-[--color-text-secondary]">
                       <div className="w-5 h-5 md:w-6 md:h-6 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-[--color-text-primary] text-xs font-bold shrink-0">
                         ✓
@@ -109,45 +106,30 @@ function ServiceCarousel() {
               </div>
 
               {/* Video a la derecha */}
-              <div className="relative max-h-[600px]">
+              <div className="relative h-full min-h-[300px]">
                 <video
-                  src={current.video}
-                  autoPlay
+                  src={example.video}
+                  autoPlay={idx === currentIndex}
                   loop
                   muted
                   playsInline
                   className="w-full h-full object-contain"
                 />
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          ))}
         </div>
 
         {/* Flecha derecha */}
         <button
           onClick={next}
-          className="hidden md:flex shrink-0 w-12 h-12 rounded-2xl border border-[--color-border] bg-[--color-bg-card] items-center justify-center text-[--color-text-primary] hover:bg-[--color-bg-elevated] transition-colors"
+          className="hidden md:flex shrink-0 w-12 h-12 rounded-2xl border border-[--color-border] bg-[--color-bg-card] items-center justify-center text-[--color-text-primary] hover:bg-[--color-bg-elevated] transition-colors cursor-pointer"
           aria-label="Siguiente"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
-      </div>
-
-      {/* Dots indicator */}
-      <div className="flex justify-center gap-2 mt-6">
-        {examples.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => handleNavigate(idx)}
-            className={`h-2 rounded-full transition-all ${
-              idx === currentIndex
-                ? 'w-8 bg-gradient-to-r from-cyan-400 to-blue-600'
-                : 'w-2 bg-[--color-border] hover:bg-[--color-text-muted]'
-            }`}
-          />
-        ))}
       </div>
     </div>
   )
