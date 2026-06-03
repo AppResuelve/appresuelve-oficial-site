@@ -244,11 +244,11 @@ function Home() {
                   <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400/20 to-blue-600/20 flex items-center justify-center text-2xl">
                     🛒
                   </div>
-                  <span className="px-3 py-1 rounded-full bg-gradient-to-r from-cyan-400/20 to-blue-600/20 border border-cyan-400/30 text-cyan-500 text-xs font-bold">
+                  <span className="px-3 py-1 rounded-full bg-gradient-to-r from-cyan-400/20 to-blue-600/20 border border-cyan-400/30 text-[--color-bg-base] text-xs font-bold">
                     Más pedido
                   </span>
                 </div>
-                <p className="text-xs font-bold uppercase tracking-wide text-cyan-500 mb-3">
+<p className="text-xs font-bold uppercase tracking-wide text-[--color-bg-base] mb-3">
                   Objetivo: vender mucho más
                 </p>
                 <h3 className="text-2xl font-black text-[--color-text-primary] mb-4">
@@ -257,8 +257,8 @@ function Home() {
                 <p className="text-[--color-text-secondary] leading-relaxed mb-6 flex-1">
                   Mostrá productos y recibí pedidos sin necesidad de ecommerce complejo.
                 </p>
-                <div className="p-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 mb-6">
-                  <p className="text-sm font-bold text-cyan-500">Vende mucho más</p>
+                <div className="p-4 rounded-2xl bg-[--color-bg-base]/10 border border-[--color-bg-base]/20 mb-6">
+                  <p className="text-sm font-bold text-[--color-bg-base]">Vende mucho más</p>
                   <p className="text-xs text-[--color-text-secondary] mt-1">
                     El cliente entiende: vendo, recibo pedidos, más simple.
                   </p>
