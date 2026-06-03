@@ -4,7 +4,7 @@ import ScheduleCall from '../components/ScheduleCall'
 import ServiceCarousel from '../components/ServiceCarousel'
 
 function Servicios() {
-  const [activeTab, setActiveTab] = useState('landing')
+  const [activeTab, setActiveTab] = useState('sitio')
 
   const scrollToExamples = (tab) => {
     setActiveTab(tab)
@@ -380,7 +380,7 @@ function Servicios() {
         {/* TABS */}
         <div className="flex justify-center mt-12">
           <div className="inline-flex p-2 rounded-2xl border border-[--color-border] bg-[--color-bg-card]/70 backdrop-blur-xl">
-            <button
+            {/* <button
               onClick={() => setActiveTab('landing')}
               className={`px-6 py-3 rounded-xl text-sm font-semibold transition-all ${
                 activeTab === 'landing'
@@ -389,7 +389,7 @@ function Servicios() {
               }`}
             >
               Landing Pages
-            </button>
+            </button> */}
 
             <button
               onClick={() => setActiveTab('sitio')}
@@ -405,7 +405,7 @@ function Servicios() {
         </div>
 
         <div className="mt-14">
-          <ServiceCarousel type={activeTab} />
+          <ServiceCarousel />
         </div>
       </section>
       {/* ─── MAINTENIMIENTO ───────────────────────────────────── */}
