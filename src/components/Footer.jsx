@@ -143,13 +143,15 @@ function Footer() {
           {/* cta */}
           <div>
             <div className="relative rounded-[2rem] overflow-hidden p-[1px] shadow-[0_20px_60px_rgba(59,130,246,0.2)]">
-              <div className="absolute  inset-0 bg-gradient-to-br from-cyan-400/20 via-transparent to-blue-600/20" />
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-transparent to-blue-600/20 pointer-events-none" />
 
               <div className="rounded-[2rem] bg-[--color-bg-card] p-8">
-                <div className="absolute top-0 left-0 w-20 h-20 rounded-2xl text-5xl opacity-60">
+                <div className="absolute top-0 left-0 w-20 h-20 rounded-2xl text-5xl opacity-60 pointer-events-none">
                   🚀
                 </div>
-                <div className="absolute bottom-10 right-3 w-20 h-20 rounded-2xl text-6xl">🚀</div>
+                <div className="absolute bottom-10 right-3 w-20 h-20 rounded-2xl text-6xl pointer-events-none">
+                  🚀
+                </div>
 
                 <h4 className="mt-6 text-2xl font-black text-[--color-text-primary] leading-tight">
                   ¿Tu negocio todavía no tiene web?

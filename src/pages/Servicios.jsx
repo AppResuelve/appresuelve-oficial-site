@@ -524,11 +524,11 @@ function Servicios() {
         </div>
       </section>
       {/* CTA */}
-      <section className="max-w-7xl mx-auto mt-0 md:mb-10 px-0 lg:px-8">
+      <section className="max-w-7xl mx-auto mt-0 md:mb-10 lg:px-8">
         <div className="relative overflow-hidden rounded-none sm:rounded-[3rem] border border-b-0 lg:border-b border-[--color-border]">
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-transparent to-blue-600/20" />
 
-          <div className="relative px-0 py-12 lg:px-14 lg:py-20 text-center">
+          <div className="relative px-4 py-12 lg:px-14 lg:py-20 text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[--color-border] bg-[--color-bg-card]/60 backdrop-blur-xl text-sm text-[--color-text-secondary] mb-8">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               Presupuestos rápidos
