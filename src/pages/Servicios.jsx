@@ -59,7 +59,7 @@ function Servicios() {
         {/* SERVICIOS */}
         <section className="relative max-w-7xl mx-auto mt-24 px-4 sm:px-6 lg:px-8 space-y-10">
           {/* LANDING */}
-          <div className="rounded-[2.5rem] border border-[--color-border] bg-[--color-bg-card]/80 backdrop-blur-xl overflow-hidden">
+          <div id="landing" className="rounded-[2.5rem] border border-[--color-border] bg-[--color-bg-card]/80 backdrop-blur-xl overflow-hidden">
             <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
               {/* LEFT */}
               <div className="p-6 md:p-10 lg:p-14">
@@ -176,7 +176,7 @@ function Servicios() {
           </div>
 
           {/* SITIO WEB */}
-          <div className="relative rounded-[2.5rem] border border-cyan-500/20 bg-[--color-bg-card]/80 backdrop-blur-xl overflow-hidden outline-4 outline-cyan-300/60">
+          <div id="sitio-web" className="relative rounded-[2.5rem] border border-cyan-500/20 bg-[--color-bg-card]/80 backdrop-blur-xl overflow-hidden outline-4 outline-cyan-300/60">
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-transparent to-blue-600/10 pointer-events-none" />
 
             <div className="relative grid lg:grid-cols-[1.1fr_0.9fr]">
@@ -409,7 +409,7 @@ function Servicios() {
         </div>
       </section>
       {/* ─── MAINTENIMIENTO ───────────────────────────────────── */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-[--color-bg-section] border-y border-[--color-border]">
+      <section id="mantenimiento" className="relative py-24 px-4 sm:px-6 lg:px-8 bg-[--color-bg-section] border-y border-[--color-border]">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-[-80px] left-[-80px] w-[250px] h-[250px] rounded-full bg-cyan-400/10 blur-3xl" />
           <div className="absolute bottom-[-80px] right-[-60px] w-[200px] h-[200px] rounded-full bg-blue-600/10 blur-3xl" />

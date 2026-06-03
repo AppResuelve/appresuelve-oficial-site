@@ -33,19 +33,7 @@ export const products = [
       'https://res.cloudinary.com/dfun5vbsf/image/upload/v1780083532/d0d20b2b-11f1-430e-a768-1be2e8d34444.png',
     color: '#4F46E5',
   },
-  {
-    id: 'tengoturno',
-    name: 'TengoTurno',
-    subtitle: 'Sistema de Turnos',
-    description:
-      'Sistema de gestión de turnos y citas para profesionales y negocios. Optimiza la agenda y reduce no-shows.',
-    tags: ['React', 'Node.js', 'MongoDB', 'PWA'],
-    type: 'SaaS',
-    state: 'En desarrollo',
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=400&fit=crop',
-    color: '#10B981',
-  },
-]
+  ]
 
 export const company = {
   name: 'AppResuelve',

@@ -5,6 +5,7 @@ const examples = [
     id: 'aquamarine',
     name: 'AquaMarina',
     description: 'Muebles de jardín, piscinas y accesorios para exterior',
+    logo: 'https://res.cloudinary.com/dfun5vbsf/image/upload/v1780322898/aqua_300_x_150_px_vrmdvy.png',
     pcVideo:
       'https://res.cloudinary.com/dfun5vbsf/video/upload/v1780507843/aquamarepcdemo_qv4xwp.mp4',
     mobileVideo:
@@ -15,6 +16,7 @@ const examples = [
     id: 'carshine',
     name: 'CarShine',
     description: 'Lubricantes, aceites y productos de limpieza automotor',
+    logo: 'https://res.cloudinary.com/dfun5vbsf/image/upload/v1780325560/carShine_300_x_100_px_xhhjgu.png',
     pcVideo:
       'https://res.cloudinary.com/dfun5vbsf/video/upload/v1780507911/carshinepcdemo_aqbqx6.mp4',
     mobileVideo:
@@ -25,6 +27,7 @@ const examples = [
     id: 'casarepostera',
     name: 'Casa Repostera',
     description: 'Ingredientes y decoraciones para repostería profesional',
+    logo: 'https://res.cloudinary.com/dfun5vbsf/image/upload/v1780181814/flavourlab-ojo_300_x_300_px_2_qp3hwv.png',
     pcVideo:
       'https://res.cloudinary.com/dfun5vbsf/video/upload/v1780507765/casareposterapcdemo_dshnr1.mp4',
     mobileVideo:
@@ -38,20 +41,13 @@ const DEMO_CYCLE_MS = 6000
 function ServiceCarousel() {
   const [demoIdx, setDemoIdx] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
-  const [isTransitioning, setIsTransitioning] = useState(false)
   const videoRefs = useRef({})
   const timerRef = useRef(null)
 
   useEffect(() => {
     timerRef.current = setInterval(() => {
       if (!isPaused) {
-        setIsTransitioning(true)
-        setTimeout(() => {
-          setDemoIdx((prev) => (prev + 1) % examples.length)
-          setTimeout(() => {
-            setIsTransitioning(false)
-          }, 500)
-        }, 500)
+        setDemoIdx((prev) => (prev + 1) % examples.length)
       }
     }, DEMO_CYCLE_MS)
 
@@ -88,16 +84,10 @@ function ServiceCarousel() {
 
   const goToDemo = useCallback(
     (demoIndex) => {
-      if (demoIndex === demoIdx) return
-      setIsTransitioning(true)
-      setTimeout(() => {
-        setDemoIdx(demoIndex)
-        setTimeout(() => {
-          setIsTransitioning(false)
-        }, 500)
-      }, 500)
+      if (demoIndex === demoIdx || isPaused) return
+      setDemoIdx(demoIndex)
     },
-    [demoIdx]
+    [demoIdx, isPaused]
   )
 
   const nextDemo = useCallback(() => {
@@ -136,14 +126,18 @@ function ServiceCarousel() {
                 idx === demoIdx ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
             >
-              <div className="p-6 md:p-8 flex flex-col justify-center order-2 md:order-1">
-                <p className="text-xs md:text-sm uppercase tracking-[0.15em] text-cyan-500 font-bold mb-2 md:mb-3">
-                  Demo {idx + 1} de {examples.length}
-                </p>
+              <div className="p-6 md:p-8 flex flex-col justify-center order-2 md:order-1 gap-6">
+                <div className="flex items-center gap-4">
+                  <img
+                    src={example.logo}
+                    alt={example.name}
+                    className={`h-10 w-auto object-contain ${example.id === 'carshine' ? 'bg-[#f59e0b] p-1' : ''}`}
+                  />
 
-                <h3 className="text-xl md:text-3xl font-black text-[--color-text-primary]">
-                  {example.name}
-                </h3>
+                  <h3 className="text-xl md:text-3xl font-black text-[--color-text-primary]">
+                    {example.name}
+                  </h3>
+                </div>
 
                 <p className="mt-3 text-sm md:text-base text-[--color-text-secondary] leading-relaxed">
                   {example.description}

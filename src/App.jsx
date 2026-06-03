@@ -20,7 +20,7 @@ function ScrollHandler() {
         if (el) {
           const offset = 120
           const top = el.getBoundingClientRect().top + window.scrollY - offset
-          window.scrollTo({ top, behavior: 'smooth' })
+          window.scrollTo({ top, behavior: 'instant' })
         } else {
           window.scrollTo(0, 0)
         }

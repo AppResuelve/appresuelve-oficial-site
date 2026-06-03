@@ -73,7 +73,7 @@ function Home() {
               </Link>
 
               <Link
-                to="/productos"
+                to="/servicios#ejemplos"
                 className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl border border-[--color-border] bg-[--color-bg-card]/80 hover:bg-[--color-bg-elevated] hover:border-[--color-border-hover] backdrop-blur-xl text-[--color-text-primary] font-semibold hover:-translate-y-0.5 transition-all duration-200"
               >
                 Ver ejemplos
@@ -469,7 +469,7 @@ function Home() {
             </Link>
 
             <Link
-              to="/productos"
+              to="/servicios#ejemplos"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border border-[--color-border] bg-[--color-bg-card]/70 hover:bg-[--color-bg-elevated] hover:border-[--color-border-hover] backdrop-blur-xl font-semibold text-lg hover:-translate-y-0.5 transition-all duration-200"
             >
               Ver trabajos
