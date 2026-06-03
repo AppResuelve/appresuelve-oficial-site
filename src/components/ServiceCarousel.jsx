@@ -111,7 +111,7 @@ function ServiceCarousel() {
   }, [demoIdx, goToDemo])
 
   return (
-    <div className="w-full md:p-8 lg:p-12">
+    <div className="w-full pb-16">
       <div className="relative flex items-center gap-6">
         <button
           onClick={prevDemo}
@@ -127,31 +127,12 @@ function ServiceCarousel() {
             />
           </svg>
         </button>
-        <button
-          onClick={handlePauseToggle}
-          className="absolute z-20 px-4 py-2 rounded-xl border border-[--color-border] bg-[--color-bg-card]/80 backdrop-blur-xl text-sm font-semibold text-[--color-text-primary] hover:bg-[--color-bg-elevated] transition-all cursor-pointer"
-        >
-          {isPaused ? (
-            <span className="flex items-center gap-2">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              Reproducir
-            </span>
-          ) : (
-            <span className="flex items-center gap-2">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
-              </svg>
-              Pausar
-            </span>
-          )}
-        </button>
-        <div className="flex-1 relative min-h-[620px] md:min-h-[420px]">
+
+        <div className="flex-1 relative min-h-[700px] md:min-h-[580px]">
           {examples.map((example, idx) => (
             <div
               key={example.id}
-              className={`absolute inset-0 grid md:grid-cols-[1fr_1.5fr] transition-opacity duration-500 ${
+              className={`absolute inset-0 grid md:grid-cols-[1fr_1.3fr] transition-opacity duration-500 ${
                 idx === demoIdx ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
             >
@@ -183,25 +164,29 @@ function ServiceCarousel() {
                 </ul>
               </div>
 
-              <div className="relative flex items-center justify-center p-4 md:pb-12 md:px-6 md:pt-6 order-1 md:order-2">
-                <div className="relative">
-                  <video
-                    ref={(el) => (videoRefs.current[idx] = el)}
-                    src={example.pcVideo}
-                    muted
-                    loop={false}
-                    playsInline
-                    className="w-full max-h-[280px] object-contain rounded-2xl border border-[--color-border] shadow-2xl shadow-black/20"
-                  />
+              <div className="relative flex items-center justify-centerorder-1 md:order-2">
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <div className="w-full max-w-[90vw] md:max-w-[55vw] rounded-2xl border-2 border-white shadow-2xl shadow-black/20 overflow-hidden">
+                    <video
+                      ref={(el) => (videoRefs.current[idx] = el)}
+                      src={example.pcVideo}
+                      muted
+                      loop={false}
+                      playsInline
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
 
-                  <video
-                    ref={(el) => (videoRefs.current[`${idx}-mobile`] = el)}
-                    src={example.mobileVideo}
-                    muted
-                    loop={false}
-                    playsInline
-                    className="absolute -right-3 -bottom-8 w-[140px] max-h-[340px] object-contain rounded-[1.25rem] border-2 border-white shadow-2xl shadow-black/30"
-                  />
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[35vw] md:w-[260px] rounded-[1.25rem] border-2 border-white shadow-2xl shadow-black/30 overflow-hidden">
+                    <video
+                      ref={(el) => (videoRefs.current[`${idx}-mobile`] = el)}
+                      src={example.mobileVideo}
+                      muted
+                      loop={false}
+                      playsInline
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -219,19 +204,27 @@ function ServiceCarousel() {
         </button>
       </div>
 
-      <div className="flex justify-center gap-2 mt-6">
-        {examples.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => goToDemo(idx)}
-            className={`h-2 rounded-full transition-all cursor-pointer ${
-              idx === demoIdx
-                ? 'w-8 bg-gradient-to-r from-cyan-400 to-blue-600'
-                : 'w-2 bg-[--color-border] hover:bg-cyan-400/40'
-            }`}
-            aria-label={`Ir a demo ${idx + 1}`}
-          />
-        ))}
+      <div className="flex justify-center">
+        <button
+          onClick={handlePauseToggle}
+          className="px-6 py-3 rounded-2xl border border-[--color-border] bg-[--color-bg-card] text-sm font-semibold text-[--color-text-primary] hover:bg-[--color-bg-elevated] transition-all cursor-pointer"
+        >
+          {isPaused ? (
+            <span className="flex items-center gap-2">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              Reproducir
+            </span>
+          ) : (
+            <span className="flex items-center gap-2">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+              </svg>
+              Pausar
+            </span>
+          )}
+        </button>
       </div>
     </div>
   )

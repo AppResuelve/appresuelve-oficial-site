@@ -362,7 +362,7 @@ function Servicios() {
       <div className="border-t border-[--color-border] my-24" />
 
       {/* EJEMPLOS */}
-      <section id="ejemplos" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="ejemplos" className="max-w-7xl mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto">
           <p className="text-xs font-bold tracking-[0.15em] uppercase text-cyan-500 mb-4">
             Resultados
