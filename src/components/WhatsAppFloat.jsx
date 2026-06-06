@@ -1,14 +1,31 @@
+import { useState, useEffect } from 'react'
+
 const WhatsAppFloat = () => {
+  const [visible, setVisible] = useState(false)
   const phone = '5493834971799'
   const message = 'Hola! Quisiera consultar por una web'
   const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const threshold = window.innerWidth >= 1024 ? 600 : 200
+      setVisible(window.scrollY > threshold)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full border-2 border-cyan-400 bg-[--color-bg-base] flex items-center justify-center text-[--color-text-primary] shadow-[0_8px_30px_rgba(59,130,246,0.25)] hover:-translate-y-1 transition-all duration-200 hover:shadow-[0_12px_40px_rgba(59,130,246,0.35)]"
+      className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full border-2 border-cyan-400 bg-[--color-bg-base] flex items-center justify-center text-[--color-text-primary] shadow-[0_8px_30px_rgba(59,130,246,0.25)] hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_12px_40px_rgba(59,130,246,0.35)] ${
+        visible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+      }`}
       aria-label="Contactar por WhatsApp"
     >
       <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">

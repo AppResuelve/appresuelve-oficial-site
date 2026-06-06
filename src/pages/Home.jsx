@@ -1,11 +1,25 @@
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { products } from '../data/productos'
-import MockCarousel from '../components/MockCarousel'
-import { mockSites } from '../utils/mockSites'
+import HomeDemoCarousel, { examples } from '../components/HomeDemoCarousel'
+
+const DEMO_CYCLE_MS = 6000
 
 function Home() {
+  const [demoIdx, setDemoIdx] = useState(0)
+  const timerRef = useRef(null)
+
+  useEffect(() => {
+    timerRef.current = setInterval(() => {
+      setDemoIdx((prev) => (prev + 1) % examples.length)
+    }, DEMO_CYCLE_MS)
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+    }
+  }, [])
+
   return (
-    <div className="min-h-screen overflow-hidden">
+    <div className="min-h-screen ">
       {/* ─── HERO ─────────────────────────────────────────────── */}
       <section className="relative pt-32 pb-28 px-4 sm:px-6 lg:px-8">
         {/* Background atmosphere */}
@@ -28,30 +42,29 @@ function Home() {
         <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
           {/* LEFT ─ copy */}
           <div>
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[--color-border] bg-[--color-bg-card]/80 backdrop-blur-xl text-sm text-[--color-text-secondary] mb-10 shadow-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-              </span>
-              Sitios web modernos listos en 72hs
-            </div>
-
             <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] font-black leading-[0.92] tracking-tight text-[--color-text-primary]">
               Tu negocio
-              <span className="block mt-1 bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent">
-                visible online
+              <span
+                key={demoIdx + '-span1'}
+                className="block mt-1 bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent whitespace-nowrap animate-fade-up"
+              >
+                {examples[demoIdx].span1}
               </span>
-              <span className="block mt-1">sin complicarte</span>
+              <span
+                key={demoIdx + '-span2'}
+                className="block mt-1 whitespace-nowrap animate-fade-up-delayed"
+              >
+                {examples[demoIdx].span2}
+              </span>
             </h1>
 
             <p className="mt-8 text-lg sm:text-xl leading-relaxed text-[--color-text-secondary] max-w-lg">
-              Creamos páginas web modernas para negocios reales. Rápidas, profesionales y conectadas
-              con WhatsApp, Google Maps y redes sociales.
+              Creamos espacios digitales que acompañan tu negocio/marca fisica, mejoramos tu
+              visibilidad y como entienden tus clientes lo que ofreces al mercado.
             </p>
 
-            {/* CTAs */}
-            <div className="mt-10 flex flex-wrap gap-4">
+            {/* CTAs — desktop */}
+            <div className="mt-10 hidden lg:flex flex-wrap gap-4">
               <Link
                 to="/contacto"
                 className="group relative inline-flex items-center gap-2 px-7 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold  outline-4 outline-cyan-300/60  shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_10px_25px_rgba(6,182,212,0.35)] hover:-translate-y-0.5 transition-all duration-200"
@@ -82,11 +95,7 @@ function Home() {
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-3 mt-14">
-              {[
-                { value: '72hs', label: 'Tiempo promedio' },
-                { value: '+24', label: 'Negocios digitales' },
-                { value: '24/7', label: 'Presencia online' },
-              ].map((stat) => (
+              {examples[demoIdx].stats.map((stat) => (
                 <div
                   key={stat.value}
                   className="rounded-2xl border border-[--color-border] bg-[--color-bg-card]/70 backdrop-blur-xl p-5 hover:border-cyan-500/30 hover:bg-[--color-bg-elevated] transition-all duration-200"
@@ -94,7 +103,7 @@ function Home() {
                   <p className="text-3xl font-black text-[--color-text-primary] tracking-tight">
                     {stat.value}
                   </p>
-                  <p className="mt-1.5 text-xs font-medium text-[--color-text-muted] uppercase tracking-wide">
+                  <p className="mt-1.5 text-xs font-medium text-[--color-text-muted] uppercase tracking-wide min-h-8">
                     {stat.label}
                   </p>
                 </div>
@@ -102,40 +111,39 @@ function Home() {
             </div>
           </div>
 
-          {/* RIGHT ─ mock browser */}
-          <div className="relative">
-            {/* Glow behind card */}
-            <div className="absolute inset-[-10%] bg-gradient-to-br from-cyan-400/15 via-sky-500/10 to-blue-600/15 blur-3xl rounded-full" />
+          {/* RIGHT ─ demo carousel */}
+          <div className="relative w-full h-[420px] lg:h-[700px]">
+            <HomeDemoCarousel slides={examples} activeIndex={demoIdx} />
+          </div>
 
-            <div className="relative rounded-[1.75rem] border border-[--color-border] bg-[--color-bg-card]/80 backdrop-blur-2xl overflow-hidden shadow-[0_32px_80px_rgba(0,0,0,0.25)]">
-              {/* Browser chrome */}
-              <div className="flex items-center gap-2 px-5 py-3.5 border-b border-[--color-border] bg-[--color-bg-section]/70">
-                <span className="w-3 h-3 rounded-full bg-red-400/90" />
-                <span className="w-3 h-3 rounded-full bg-yellow-400/90" />
-                <span className="w-3 h-3 rounded-full bg-green-400/90" />
-                <div className="ml-3 flex-1 h-8 rounded-lg bg-[--color-bg-base] border border-[--color-border] flex items-center px-3.5 justify-between text-xs text-[--color-text-muted]">
-                  <span>tunegocio.com</span>
-                  <svg
-                    className="w-3.5 h-3.5 shrink-0 opacity-60"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
-                </div>
-              </div>
+          {/* CTAs — mobile */}
+          <div className="mt-10 flex flex-col lg:hidden gap-3">
+            <Link
+              to="/contacto"
+              className="w-full justify-center group relative inline-flex items-center gap-2 px-7 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold  outline-4 outline-cyan-300/60  shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_10px_25px_rgba(6,182,212,0.35)] hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Quiero mi web
+              <svg
+                className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                />
+              </svg>
+            </Link>
 
-              {/* Simulated content */}
-              <div className="h-[320px] lg:h-[360px]">
-                <MockCarousel sites={mockSites} />
-              </div>
-            </div>
+            <Link
+              to="/servicios#ejemplos"
+              className="w-full justify-center inline-flex items-center gap-2 px-7 py-4 rounded-2xl border border-[--color-border] bg-[--color-bg-card]/80 hover:bg-[--color-bg-elevated] hover:border-[--color-border-hover] backdrop-blur-xl text-[--color-text-primary] font-semibold hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Ver ejemplos
+            </Link>
           </div>
         </div>
       </section>
@@ -212,15 +220,16 @@ function Home() {
               <p className="text-xs font-bold uppercase tracking-wide text-cyan-500 mb-3">
                 Objetivo: convertir rápido
               </p>
-              <h3 className="text-2xl font-black text-[--color-text-primary] mb-4">
-                Landing Page
-              </h3>
+              <h3 className="text-2xl font-black text-[--color-text-primary] mb-4">Landing Page</h3>
               <p className="text-[--color-text-secondary] leading-relaxed mb-8">
                 Ideal para mostrar tu negocio, servicios y contacto en una sola página profesional.
               </p>
               <ul className="space-y-2 mb-8">
                 {['WhatsApp', 'Maps', 'Responsive', 'Redes'].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-[--color-text-secondary]">
+                  <li
+                    key={item}
+                    className="flex items-center gap-2 text-sm text-[--color-text-secondary]"
+                  >
                     <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
                     {item}
                   </li>
@@ -231,8 +240,18 @@ function Home() {
                 className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-500 hover:text-cyan-400 transition-colors"
               >
                 Ver servicio
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                  />
                 </svg>
               </Link>
             </div>
@@ -248,7 +267,7 @@ function Home() {
                     Más pedido
                   </span>
                 </div>
-<p className="text-xs font-bold uppercase tracking-wide text-[--color-bg-base] mb-3">
+                <p className="text-xs font-bold uppercase tracking-wide text-[--color-bg-base] mb-3">
                   Objetivo: vender mucho más
                 </p>
                 <h3 className="text-2xl font-black text-[--color-text-primary] mb-4">
@@ -268,8 +287,18 @@ function Home() {
                   className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold text-sm outline-4 outline-cyan-300/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_8px_20px_rgba(6,182,212,0.3)] hover:-translate-y-0.5 transition-all duration-200"
                 >
                   Ver servicio
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                    />
                   </svg>
                 </Link>
               </div>
@@ -291,7 +320,10 @@ function Home() {
               </p>
               <ul className="space-y-2 mb-8">
                 {['Multipágina', 'Secciones custom', 'Más presencia'].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-[--color-text-secondary]">
+                  <li
+                    key={item}
+                    className="flex items-center gap-2 text-sm text-[--color-text-secondary]"
+                  >
                     <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
                     {item}
                   </li>
@@ -302,8 +334,18 @@ function Home() {
                 className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-500 hover:text-cyan-400 transition-colors"
               >
                 Ver servicio
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                  />
                 </svg>
               </Link>
             </div>
