@@ -42,14 +42,14 @@ function Home() {
         <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
           {/* LEFT ─ copy */}
           <div>
-            <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] font-black leading-[0.92] tracking-tight text-[--color-text-primary]">
+            <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] font-black leading-[0.92] tracking-tight text-[--color-text-primary] min-h-[150px]">
               Tu negocio{' '}
               <span key={demoIdx + '-prefix'} className="whitespace-nowrap animate-fade-up">
                 {examples[demoIdx].prefixSpan}
               </span>
               <span
                 key={demoIdx + '-span1'}
-                className={`block mt-1 bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent whitespace-nowrap animate-fade-up ${demoIdx === 2 ? 'max-[390px]:text-4xl' : ''}`}
+                className={`block mt-1 bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent whitespace-nowrap animate-fade-up ${demoIdx === 2 ? 'max-[391px]:text-4xl' : ''}`}
               >
                 {examples[demoIdx].span1}
               </span>

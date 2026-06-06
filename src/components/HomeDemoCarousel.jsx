@@ -11,7 +11,7 @@ export const examples = [
     span2: 'única',
     prefixSpan: 'es',
     stats: [
-      { value: '48hs', label: 'promedio' },
+      { value: '48hs', label: 'promedio de entrega' },
       { value: 'UX', label: 'experiencia de usuario' },
       { value: 'Auto', label: 'resuelve dudas' },
     ],
@@ -28,7 +28,7 @@ export const examples = [
     span2: 'y seriedad',
     prefixSpan: 'es',
     stats: [
-      { value: '48hs', label: 'promedio' },
+      { value: '48hs', label: 'promedio de entrega' },
       { value: '24/7', label: 'servicios y turnos' },
       { value: 'Simple', label: 'administración' },
     ],
@@ -45,7 +45,7 @@ export const examples = [
     span2: 'en automático',
     prefixSpan: 'esta',
     stats: [
-      { value: '48hs', label: 'promedio' },
+      { value: '48hs', label: 'promedio de entrega' },
       { value: 'WSP', label: 'pedidos al WhatsApp' },
       { value: '100%', label: 'personalizable' },
     ],
@@ -62,7 +62,7 @@ export const examples = [
     span2: 'de tus clientes',
     prefixSpan: 'esta',
     stats: [
-      { value: '48hs', label: 'promedio' },
+      { value: '48hs', label: 'promedio de entrega' },
       { value: 'WSP', label: 'pedidos al WhatsApp' },
       { value: 'Cliente', label: 'enfocada en el cliente' },
     ],
