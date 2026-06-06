@@ -43,7 +43,13 @@ function Home() {
           {/* LEFT ─ copy */}
           <div>
             <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] font-black leading-[0.92] tracking-tight text-[--color-text-primary]">
-              Tu negocio
+              Tu negocio{' '}
+              <span
+                key={demoIdx + '-prefix'}
+                className="whitespace-nowrap animate-fade-up"
+              >
+                {examples[demoIdx].prefixSpan}
+              </span>
               <span
                 key={demoIdx + '-span1'}
                 className="block mt-1 bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent whitespace-nowrap animate-fade-up"
@@ -58,7 +64,7 @@ function Home() {
               </span>
             </h1>
 
-            <p className="mt-8 text-lg sm:text-xl leading-relaxed text-[--color-text-secondary] max-w-lg">
+            <p className="hidden md:block mt-8 text-lg sm:text-xl leading-relaxed text-[--color-text-secondary] max-w-lg">
               Creamos espacios digitales que acompañan tu negocio/marca fisica, mejoramos tu
               visibilidad y como entienden tus clientes lo que ofreces al mercado.
             </p>
@@ -98,7 +104,7 @@ function Home() {
               {examples[demoIdx].stats.map((stat) => (
                 <div
                   key={stat.value}
-                  className="rounded-2xl border border-[--color-border] bg-[--color-bg-card]/70 backdrop-blur-xl p-5 hover:border-cyan-500/30 hover:bg-[--color-bg-elevated] transition-all duration-200"
+                  className="rounded-2xl border border-[--color-border] bg-[--color-bg-card]/70 backdrop-blur-xl p-4 md:p-5 hover:border-cyan-500/30 hover:bg-[--color-bg-elevated] transition-all duration-200"
                 >
                   <p className="text-3xl font-black text-[--color-text-primary] tracking-tight">
                     {stat.value}

@@ -7,8 +7,9 @@ export const examples = [
       'https://res.cloudinary.com/dfun5vbsf/image/upload/v1780701013/Macbook-Air-comoeraantes.vercel.app_ozqlu0.png',
     mobileImage:
       'https://res.cloudinary.com/dfun5vbsf/image/upload/v1780701014/iPhone-13-PRO-comoeraantes.vercel.app_cpt6ad.png',
-    span1: 'transmite',
-    span2: 'una experiencia única',
+    span1: 'una experiencia',
+    span2: 'única',
+    prefixSpan: 'es',
     stats: [
       { value: '48hs', label: 'promedio' },
       { value: 'UX', label: 'experiencia de usuario' },
@@ -23,8 +24,9 @@ export const examples = [
       'https://res.cloudinary.com/dfun5vbsf/image/upload/v1780701129/Macbook-Air-localhost_e1dx8p.png',
     mobileImage:
       'https://res.cloudinary.com/dfun5vbsf/image/upload/v1780701126/iPhone-13-PRO-localhost_3_hedqat.png',
-    span1: 'es profesionalismo',
+    span1: 'profesionalismo',
     span2: 'y seriedad',
+    prefixSpan: 'es',
     stats: [
       { value: '48hs', label: 'promedio' },
       { value: '24/7', label: 'servicios y turnos' },
@@ -39,8 +41,9 @@ export const examples = [
       'https://res.cloudinary.com/dfun5vbsf/image/upload/v1780701204/Macbook-Air-website-corporate.vercel.app_3_tyzrg5.png',
     mobileImage:
       'https://res.cloudinary.com/dfun5vbsf/image/upload/v1780701204/iPhone-13-PRO-website-corporate.vercel.app_3_itr6jy.png',
-    span1: 'comercializa',
-    span2: 'y recibe pedidos',
+    span1: 'recibiendo pedidos',
+    span2: 'en automático',
+    prefixSpan: 'esta',
     stats: [
       { value: '48hs', label: 'promedio' },
       { value: 'WSP', label: 'pedidos al WhatsApp' },
@@ -57,6 +60,7 @@ export const examples = [
       'https://res.cloudinary.com/dfun5vbsf/image/upload/v1780701274/iPhone-13-PRO-acuamare.vercel.app_3_kqbvc4.png',
     span1: 'al alcance',
     span2: 'de tus clientes',
+    prefixSpan: 'esta',
     stats: [
       { value: '48hs', label: 'promedio' },
       { value: 'WSP', label: 'pedidos al WhatsApp' },
