@@ -19,7 +19,7 @@ function Home() {
   }, [])
 
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen overflow-x-hidden">
       {/* ─── HERO ─────────────────────────────────────────────── */}
       <section className="relative pt-32 pb-28 px-4 sm:px-6 lg:px-8">
         {/* Background atmosphere */}
