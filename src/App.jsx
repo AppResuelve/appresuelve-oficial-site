@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation, Outlet } from 'react-router-dom'
 import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Productos from './pages/Productos'
 import Contacto from './pages/Contacto'
 import Servicios from './pages/Servicios'
+import CatalogoWhatsApp from './landings/catalogoWhatsApp'
 import './index.css'
 
 function ScrollHandler() {
@@ -33,23 +34,32 @@ function ScrollHandler() {
   return null
 }
 
+function AppLayout() {
+  return (
+    <div className="app">
+      <Navbar />
+      <main className="main-content">
+        <Outlet />
+      </main>
+      <Footer />
+      <WhatsAppFloat />
+    </div>
+  )
+}
+
 function App() {
   return (
     <Router>
       <ScrollHandler />
-      <div className="app">
-        <Navbar />
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/servicios" element={<Servicios />} />
-            <Route path="/productos" element={<Productos />} />
-            <Route path="/contacto" element={<Contacto />} />
-          </Routes>
-        </main>
-        <Footer />
-        <WhatsAppFloat />
-      </div>
+      <Routes>
+        <Route path="/landing/catalogo-whatsapp" element={<CatalogoWhatsApp />} />
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/servicios" element={<Servicios />} />
+          <Route path="/productos" element={<Productos />} />
+          <Route path="/contacto" element={<Contacto />} />
+        </Route>
+      </Routes>
     </Router>
   )
 }
