@@ -314,8 +314,32 @@ const includes = [
 
 // ─── COMPONENTE PRINCIPAL ──────────────────────────────────────────────────────
 function CatalogoWhatsApp() {
+  const [showBanner, setShowBanner] = useState(false)
+  const prevScrollY = useRef(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY
+      const scrollingUp = currentY < prevScrollY.current
+      setShowBanner(scrollingUp || currentY < 10)
+      prevScrollY.current = currentY
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <div className="min-h-screen overflow-x-hidden">
+      {/* ── TOP BANNER ─────────────────────────────────────────── */}
+      <div
+        className={`fixed top-0 left-0 right-0 z-50 bg-[#0c2d4e] text-white text-center py-3 px-4 text-sm font-semibold transition-transform duration-300 ${
+          showBanner ? 'translate-y-0' : '-translate-y-full'
+        }`}
+      >
+        Este es un servicio personalizado, tomamos pedidos hasta el 15/6
+      </div>
+
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="relative pt-32 pb-28 px-4 sm:px-6 lg:px-8">
         {/* Background atmosphere */}
@@ -336,20 +360,15 @@ function CatalogoWhatsApp() {
         <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           {/* LEFT — copy */}
           <div>
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-400/10">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-              <span className="text-xs font-bold tracking-widest uppercase text-cyan-400">
-                Plan mensual disponible
-              </span>
-            </div>
-
             <h1 className="text-5xl sm:text-6xl lg:text-[4.2rem] font-black leading-[0.95] tracking-tight text-[--color-text-primary]">
               Tu catálogo online.
               <span className="block mt-2 bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent">
                 Los pedidos,
               </span>
-              <span className="block mt-1">directo a tu WhatsApp.</span>
+              <span className="block mt-1">
+                directo a tu{' '}
+                <span style={{ color: '#25D366', textShadow: '0 0 8px rgba(0,0,0,0.4)' }}>WhatsApp</span>.
+              </span>
             </h1>
 
             <p className="mt-8 text-lg sm:text-xl leading-relaxed text-[--color-text-secondary] max-w-lg">
@@ -458,7 +477,7 @@ function CatalogoWhatsApp() {
 
           {/* Card destacada */}
           <div className="max-w-lg mx-auto relative rounded-[2rem] p-[1.5px] bg-gradient-to-br from-cyan-400 via-sky-400 to-blue-600 shadow-[0_24px_80px_rgba(6,182,212,0.25)]">
-            <div className="h-full rounded-[calc(2rem-1.5px)] bg-[--color-bg-card] p-10 flex flex-col">
+            <div className="h-full rounded-[calc(2rem-1.5px)] bg-[--color-bg-card] p-8 md:p-10 flex flex-col">
 
               <p className="text-lg font-bold uppercase tracking-wide text-[#0c2d4e] mb-2">
                 Catálogo con pedidos WhatsApp
