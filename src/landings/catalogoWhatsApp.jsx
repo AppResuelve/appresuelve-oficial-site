@@ -1,4 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
+import { ArrowRight, Check, Store, ShoppingCart, Settings, Smartphone } from 'lucide-react'
+
+// ─── ALIAS DE ÍCONOS LUCIDE ──────────────────────────────────────────────────────
+const IconArrow = ArrowRight
+const IconCheck = Check
+const IconShop = Store
+const IconCart = ShoppingCart
+const IconGear = Settings
+const IconPhone = Smartphone
 
 // ─── DATOS DEL CARRUSEL ────────────────────────────────────────────────────────
 const slides = [
@@ -22,40 +31,10 @@ const WSP_MSG = encodeURIComponent('Hola! Me interesa el plan de Catálogo con W
 const WSP_URL = `https://wa.me/${WSP_NUMBER}?text=${WSP_MSG}`
 
 // ─── ÍCONOS ───────────────────────────────────────────────────────────────────
-function IconArrow({ className = 'w-4 h-4' }) {
-  return (
-    <svg
-      className={className}
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={2.5}
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-    </svg>
-  )
-}
-
-function IconCheck() {
-  return (
-    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-    </svg>
-  )
-}
-
 function IconWhatsApp({ className = 'w-5 h-5' }) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-    </svg>
-  )
-}
-
-function IconShop({ className = 'w-5 h-5' }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3 9l1.5-4.5A1.5 1.5 0 016 3h12a1.5 1.5 0 011.5 1.5L21 9M3 9v10.5A1.5 1.5 0 004.5 21h15a1.5 1.5 0 001.5-1.5V9M3 9h18M9 21V9" />
     </svg>
   )
 }
@@ -281,22 +260,22 @@ function PhoneMockup() {
 // ─── SECCIÓN FEATURES ─────────────────────────────────────────────────────────
 const features = [
   {
-    icon: '🛒',
+    Icon: IconCart,
     title: 'Catálogo completo',
     desc: 'Productos con fotos, precios y categorías. Tus clientes navegan y eligen como en una tienda real.',
   },
   {
-    icon: '💬',
+    Icon: IconWhatsApp,
     title: 'Pedidos por WhatsApp',
     desc: 'El cliente arma el carrito y con un clic te manda el pedido completo. Sin apps ni comisiones.',
   },
   {
-    icon: '⚙️',
+    Icon: IconGear,
     title: 'Panel de admin simple',
     desc: 'Cargás productos, cambiás precios y ponés ofertas vos mismo. No necesitás saber de tecnología.',
   },
   {
-    icon: '📱',
+    Icon: IconPhone,
     title: 'Diseño responsive',
     desc: 'Funciona perfecto en celular, tablet y PC. Tus clientes compran desde donde quieran.',
   },
@@ -327,6 +306,13 @@ function CatalogoWhatsApp() {
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    document.documentElement.style.scrollBehavior = 'smooth'
+    return () => {
+      document.documentElement.style.scrollBehavior = ''
+    }
   }, [])
 
   return (
@@ -447,8 +433,8 @@ function CatalogoWhatsApp() {
                 key={f.title}
                 className="group relative rounded-3xl border border-[--color-border] bg-[--color-bg-card] p-7 hover:-translate-y-1.5 hover:border-cyan-500/30 hover:shadow-[0_20px_40px_rgba(6,182,212,0.08)] transition-all duration-300"
               >
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400/10 to-blue-600/10 border border-[--color-border] flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {f.icon}
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400/10 to-blue-600/10 border border-[--color-border] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <f.Icon className="w-7 h-7" />
                 </div>
                 <h3 className="text-lg font-bold text-[--color-text-primary] mb-2">{f.title}</h3>
                 <p className="text-sm text-[--color-text-secondary] leading-relaxed">{f.desc}</p>
@@ -493,7 +479,7 @@ function CatalogoWhatsApp() {
               </div>
 
               {/* Lista de incluidos */}
-              <ul className="flex flex-col gap-3 mb-10">
+              <ul className="flex flex-col gap-3 mb-10 text-left">
                 {includes.map((item) => (
                   <li
                     key={item}
@@ -524,7 +510,7 @@ function CatalogoWhatsApp() {
       </section>
 
       {/* ── CTA FINAL ────────────────────────────────────────── */}
-      <section className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Background — igual al Home */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/8 via-transparent to-blue-600/8" />
@@ -568,12 +554,72 @@ function CatalogoWhatsApp() {
             </a>
 
             <a
-              href="https://appresuelve.site"
-              target="_blank"
-              rel="noreferrer"
+              href="#sobre-mi"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border border-[--color-border] bg-[--color-bg-card]/70 hover:bg-[--color-bg-elevated] hover:border-[--color-border-hover] backdrop-blur-xl font-semibold text-lg hover:-translate-y-0.5 transition-all duration-200"
             >
-              Ver el sitio completo
+              ¿Quién me entrega esto?
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SOBRE MÍ ──────────────────────────────────────────── */}
+      <section
+        id="sobre-mi"
+        className="relative py-28 px-4 sm:px-6 lg:px-8 bg-[--color-bg-section] border-t border-[--color-border]"
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl sm:text-5xl font-black text-[--color-text-primary] leading-[1.1]">
+            Soy Tomas, y sí,
+            <br />
+            no soy una empresa gigante.
+          </h2>
+
+          <p className="mt-6 text-lg text-[--color-text-secondary] leading-relaxed max-w-2xl mx-auto">
+            Soy un desarrollador independiente con más de 3 años de experiencia y he creado soluciones
+            más grandes y complejas que esta.
+          </p>
+
+          {/* Videos */}
+          <div className="relative flex items-center justify-center mt-12 max-w-2xl mx-auto">
+            <video
+              src="/videos/Video Mobile Ejemplos Servicios.mp4"
+              className="w-[45%] rounded-2xl shadow-lg z-10"
+              controls
+              playsInline
+              muted
+              loop
+            />
+            <video
+              src="/videos/Video Mobile Ejemplos Servicios2.mp4"
+              className="w-[45%] rounded-2xl shadow-lg -ml-8 mt-6 z-20"
+              controls
+              playsInline
+              muted
+              loop
+            />
+          </div>
+
+          <p className="mt-10 text-lg text-[--color-text-secondary] leading-relaxed max-w-2xl mx-auto">
+            Pero hoy mi objetivo es ayudar a los que recién empiezan en este mundo de lo digital, es
+            por eso que estoy acompañando a los negocios que quieran algo simple y fácil de usar
+            brindando esta solución.
+          </p>
+
+          <p className="mt-8 text-xl font-bold text-[--color-text-primary]">
+            Si te interesa, te espero en WhatsApp
+          </p>
+
+          <div className="mt-6">
+            <a
+              href={WSP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold text-lg shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_12px_40px_rgba(6,182,212,0.35)] hover:-translate-y-0.5 transition-all duration-200"
+            >
+              <IconWhatsApp className="w-5 h-5" />
+              Hablar ahora
+              <IconArrow className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
             </a>
           </div>
         </div>
