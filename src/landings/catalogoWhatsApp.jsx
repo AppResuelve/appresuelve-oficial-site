@@ -260,6 +260,11 @@ function PhoneMockup() {
 // ─── SECCIÓN FEATURES ─────────────────────────────────────────────────────────
 const features = [
   {
+    Icon: IconPhone,
+    title: 'Todos compran por celular',
+    desc: 'Tus clientes y tus futuros clientes usan el celular para comprar, o al menos para saber que vendes.',
+  },
+  {
     Icon: IconCart,
     title: 'Catálogo completo',
     desc: 'Productos con fotos, precios y categorías. Tus clientes navegan y eligen como en una tienda real.',
@@ -273,11 +278,6 @@ const features = [
     Icon: IconGear,
     title: 'Panel de admin simple',
     desc: 'Cargás productos, cambiás precios y ponés ofertas vos mismo. No necesitás saber de tecnología.',
-  },
-  {
-    Icon: IconPhone,
-    title: 'Diseño responsive',
-    desc: 'Funciona perfecto en celular, tablet y PC. Tus clientes compran desde donde quieran.',
   },
 ]
 
