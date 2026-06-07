@@ -353,7 +353,10 @@ function CatalogoWhatsApp() {
               </span>
               <span className="block mt-1">
                 directo a tu{' '}
-                <span style={{ color: '#25D366', textShadow: '0 0 8px rgba(0,0,0,0.4)' }}>WhatsApp</span>.
+                <span style={{ color: '#25D366', textShadow: '0 0 8px rgba(0,0,0,0.4)' }}>
+                  WhatsApp
+                </span>
+                .
               </span>
             </h1>
 
@@ -464,7 +467,6 @@ function CatalogoWhatsApp() {
           {/* Card destacada */}
           <div className="max-w-lg mx-auto relative rounded-[2rem] p-[1.5px] bg-gradient-to-br from-cyan-400 via-sky-400 to-blue-600 shadow-[0_24px_80px_rgba(6,182,212,0.25)]">
             <div className="h-full rounded-[calc(2rem-1.5px)] bg-[--color-bg-card] p-8 md:p-10 flex flex-col">
-
               <p className="text-lg font-bold uppercase tracking-wide text-[#0c2d4e] mb-2">
                 Catálogo con pedidos WhatsApp
               </p>
@@ -531,7 +533,9 @@ function CatalogoWhatsApp() {
           </p>
           <h2 className="text-5xl sm:text-6xl font-black text-[--color-text-primary] leading-[1.0] tracking-tight">
             Tu negocio puede recibir pedidos por{' '}
-            <span style={{ color: '#25D366', textShadow: '0 0 8px rgba(0,0,0,0.4)' }}>WhatsApp</span>{' '}
+            <span style={{ color: '#25D366', textShadow: '0 0 8px rgba(0,0,0,0.4)' }}>
+              WhatsApp
+            </span>{' '}
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               hoy mismo.
             </span>
@@ -568,45 +572,46 @@ function CatalogoWhatsApp() {
         id="sobre-mi"
         className="relative py-28 px-4 sm:px-6 lg:px-8 bg-[--color-bg-section] border-t border-[--color-border]"
       >
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
           <h2 className="text-4xl sm:text-5xl font-black text-[--color-text-primary] leading-[1.1]">
             Soy Tomas, y sí,
             <br />
             no soy una empresa gigante.
           </h2>
 
-          <p className="mt-6 text-lg text-[--color-text-secondary] leading-relaxed max-w-2xl mx-auto">
-            Soy un desarrollador independiente con más de 3 años de experiencia y he creado soluciones
-            más grandes y complejas que esta.
+          <p className="mt-6 text-lg text-center text-[--color-text-secondary] leading-relaxed max-w-2xl ">
+            Soy un desarrollador independiente con más de 3 años de experiencia y he creado
+            soluciones más grandes y complejas que esta.
           </p>
 
           {/* Videos */}
-          <div className="relative flex items-center justify-center mt-12 max-w-2xl mx-auto">
+          <div className="relative flex items-center justify-center mt-12 mb-12 max-w-2xl mx-auto">
             <video
-              src="/videos/Video Mobile Ejemplos Servicios.mp4"
-              className="w-[45%] rounded-2xl shadow-lg z-10"
-              controls
+              src="https://res.cloudinary.com/dfun5vbsf/video/upload/v1780802134/Vidoe_Landing_Page_Catalog-Whatsapp_vqkorx.mp4"
+              className="w-[45%] rounded-2xl shadow-lg z-10 pointer-events-none"
+              autoPlay
               playsInline
               muted
               loop
             />
             <video
-              src="/videos/Video Mobile Ejemplos Servicios2.mp4"
-              className="w-[45%] rounded-2xl shadow-lg -ml-8 mt-6 z-20"
-              controls
+              src="https://res.cloudinary.com/dfun5vbsf/video/upload/v1780802034/Video_Landing_Catalog-Whatsapp_nyt8pj.mp4"
+              className="w-[45%] rounded-2xl shadow-lg -ml-8 mt-6 z-20 pointer-events-none"
+              autoPlay
               playsInline
               muted
               loop
             />
           </div>
+          <div className="max-w-2xl mx-auto">
+            <p className="mt-10 text-lg text-center text-[--color-text-secondary] leading-relaxed ">
+              Pero <strong>hoy mi objetivo es ayudar a los que recién empiezan</strong> en este
+              mundo digital, es por eso que estoy acompañando a los negocios que quieran algo simple
+              y fácil de usar brindando esta solución.
+            </p>
+          </div>
 
-          <p className="mt-10 text-lg text-[--color-text-secondary] leading-relaxed max-w-2xl mx-auto">
-            Pero hoy mi objetivo es ayudar a los que recién empiezan en este mundo de lo digital, es
-            por eso que estoy acompañando a los negocios que quieran algo simple y fácil de usar
-            brindando esta solución.
-          </p>
-
-          <p className="mt-8 text-xl font-bold text-[--color-text-primary]">
+          <p className="mt-8 text-xl text-center font-bold text-[--color-text-primary]">
             Si te interesa, te espero en WhatsApp
           </p>
 
