@@ -291,6 +291,13 @@ const includes = [
   'Sin comisiones por venta',
 ]
 
+const handleWspClick = () => {
+  if (typeof fbq !== 'undefined') {
+    // eslint-disable-next-line no-undef
+    fbq('trackCustom', 'ClickWhatsApp')
+  }
+}
+
 // ─── COMPONENTE PRINCIPAL ──────────────────────────────────────────────────────
 function CatalogoWhatsApp() {
   const [showBanner, setShowBanner] = useState(false)
@@ -369,6 +376,7 @@ function CatalogoWhatsApp() {
             <div className="mt-10 flex flex-wrap gap-4">
               <a
                 href={WSP_URL}
+                onClick={handleWspClick}
                 target="_blank"
                 rel="noreferrer"
                 className="group relative inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_10px_25px_rgba(6,182,212,0.35)] hover:-translate-y-0.5 transition-all duration-200"
@@ -501,6 +509,7 @@ function CatalogoWhatsApp() {
                 target="_blank"
                 rel="noreferrer"
                 className="group w-full inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold text-base shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_8px_20px_rgba(6,182,212,0.3)] hover:-translate-y-0.5 transition-all duration-200"
+                onClick={handleWspClick}
               >
                 <IconWhatsApp className="w-5 h-5" />
                 Consultar por WhatsApp
@@ -551,6 +560,7 @@ function CatalogoWhatsApp() {
               target="_blank"
               rel="noreferrer"
               className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold text-lg shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_12px_40px_rgba(6,182,212,0.35)] hover:-translate-y-0.5 transition-all duration-200"
+              onClick={handleWspClick}
             >
               <IconWhatsApp className="w-5 h-5" />
               Hablar ahora
@@ -621,6 +631,7 @@ function CatalogoWhatsApp() {
               target="_blank"
               rel="noreferrer"
               className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold text-lg shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_12px_40px_rgba(6,182,212,0.35)] hover:-translate-y-0.5 transition-all duration-200"
+              onClick={handleWspClick}
             >
               <IconWhatsApp className="w-5 h-5" />
               Hablar ahora
