@@ -9,23 +9,15 @@ const IconCart = ShoppingCart
 const IconGear = Settings
 const IconPhone = Smartphone
 
-// ─── DATOS DEL CARRUSEL ────────────────────────────────────────────────────────
-const slides = [
-  {
-    label: 'Vista del cliente en el catálogo',
-    content: 'catalog',
-  },
-  {
-    label: 'Panel de administración',
-    content: 'admin',
-  },
-  {
-    label: 'Pedido llegando a tu WhatsApp',
-    content: 'whatsapp',
-  },
-]
+// ─── VIDEO MOCKUP ─────────────────────────────────────────────────────────────
+const MOCKUP_VIDEO =
+  'https://res.cloudinary.com/dfun5vbsf/video/upload/v1781891644/para_landing_page_de_cart_whatsapp_obnmcs.mp4'
 
-const SLIDE_MS = 4000
+const SLIDE_TEXTS = [
+  'Vista del cliente en el catálogo',
+  'Pedido llegando a tu WhatsApp',
+  'Panel de administración',
+]
 const WSP_NUMBER = '543834971799'
 const WSP_MSG = encodeURIComponent('Hola! Me interesa el plan de Catálogo con WhatsApp 🛒')
 const WSP_URL = `https://wa.me/${WSP_NUMBER}?text=${WSP_MSG}`
@@ -39,219 +31,32 @@ function IconWhatsApp({ className = 'w-5 h-5' }) {
   )
 }
 
-// ─── SLIDES DEL PHONE MOCKUP ──────────────────────────────────────────────────
-
-function SlideCatalog() {
-  return (
-    <div className="flex flex-col animate-fade-up">
-      {/* Header tienda */}
-      <div className="bg-gradient-to-r from-cyan-600 to-blue-700 p-4">
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-xl">
-            🛍️
-          </div>
-          <div>
-            <p className="text-white font-bold text-sm leading-tight">Despensa Don Roberto</p>
-            <p className="text-white/70 text-xs">⭐ Pedidos por WhatsApp</p>
-          </div>
-        </div>
-        <div className="bg-white/15 rounded-lg px-3 py-2 text-white/70 text-xs flex items-center gap-2">
-          🔍 Buscar productos...
-        </div>
-      </div>
-
-      {/* Grilla de productos */}
-      <div className="grid grid-cols-2 gap-2 p-3 bg-white flex-1">
-        {[
-          { emoji: '🍞', bg: 'bg-yellow-50', name: 'Pan lactal', price: '$950', offer: false },
-          { emoji: '🥛', bg: 'bg-green-50', name: 'Leche entera', price: '$1.200', offer: false },
-          { emoji: '🍅', bg: 'bg-red-50', name: 'Tomate x kg', price: '$700 🔥', offer: true },
-          { emoji: '🧃', bg: 'bg-sky-50', name: 'Jugo Tang x3', price: '$1.500', offer: false },
-        ].map((p) => (
-          <div key={p.name} className="rounded-xl overflow-hidden border border-slate-100">
-            <div className={`h-16 ${p.bg} flex items-center justify-center text-3xl`}>
-              {p.emoji}
-            </div>
-            <div className="p-2">
-              <p className="text-xs font-semibold text-slate-800 leading-tight">{p.name}</p>
-              <p
-                className={`text-xs font-bold mt-0.5 ${p.offer ? 'text-green-600' : 'text-cyan-600'}`}
-              >
-                {p.price}
-              </p>
-              <button className="w-full mt-1.5 py-1 rounded-md bg-cyan-600 text-white text-[10px] font-bold">
-                + Agregar
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function SlideAdmin() {
-  return (
-    <div className="flex flex-col animate-fade-up bg-slate-50 flex-1">
-      {/* Barra de admin */}
-      <div className="bg-slate-800 px-4 py-3 flex items-center gap-2">
-        <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
-        <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-        <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
-        <span className="ml-2 text-slate-400 text-xs font-medium">⚙️ Panel de administración</span>
-      </div>
-
-      {/* Cuerpo */}
-      <div className="p-4 flex flex-col gap-3">
-        <span className="inline-block px-2 py-0.5 rounded-full bg-green-100 text-green-700 text-[10px] font-bold">
-          ✅ Producto guardado
-        </span>
-
-        <div>
-          <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1">
-            Nombre
-          </p>
-          <div className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-700 font-medium">
-            Aceite girasol 900ml
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-2">
-          <div>
-            <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1">
-              Precio
-            </p>
-            <div className="bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-700 font-medium">
-              $2.100
-            </div>
-          </div>
-          <div>
-            <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1">
-              Oferta
-            </p>
-            <div className="bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs text-green-600 font-bold">
-              $1.800 🔥
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1">
-            Categoría
-          </p>
-          <div className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-700 font-medium">
-            Almacén
-          </div>
-        </div>
-
-        <button className="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-bold mt-1 shadow-[0_4px_14px_rgba(6,182,212,0.35)]">
-          Guardar cambios
-        </button>
-      </div>
-    </div>
-  )
-}
-
-function SlideWhatsApp() {
-  return (
-    <div className="flex flex-col animate-fade-up">
-      {/* Header WhatsApp */}
-      <div className="bg-[#075e54] px-4 py-3 flex items-center gap-3">
-        <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-base">
-          🛍️
-        </div>
-        <div>
-          <p className="text-white font-semibold text-sm leading-tight">Despensa Don Roberto</p>
-          <p className="text-white/70 text-[10px]">en línea</p>
-        </div>
-      </div>
-
-      {/* Chat */}
-      <div className="flex-1 bg-[#ece5dd] p-3 flex flex-col gap-2.5 min-h-[300px]">
-        {/* Mensaje entrante — saludo */}
-        <div className="bg-white rounded-[0_12px_12px_12px] px-3 py-2 max-w-[85%] shadow-sm">
-          <p className="text-xs text-slate-800 leading-relaxed">¡Hola! Quiero hacer un pedido 👋</p>
-          <p className="text-[9px] text-slate-400 text-right mt-1">10:32</p>
-        </div>
-
-        {/* Mensaje entrante — pedido */}
-        <div className="bg-white rounded-[0_12px_12px_12px] px-3 py-2 max-w-[90%] shadow-sm">
-          <p className="text-xs text-slate-800 leading-relaxed">
-            🛒 <span className="font-bold">Mi pedido:</span>
-            <br />
-            • Pan lactal x2 — $1.900
-            <br />
-            • Leche entera x3 — $3.600
-            <br />
-            • Tomate x1kg — $700
-            <br />
-            <br />
-            <span className="font-bold">Total: $6.200</span>
-          </p>
-          <p className="text-[9px] text-slate-400 text-right mt-1">10:32</p>
-        </div>
-
-        {/* Mensaje saliente */}
-        <div className="bg-[#dcf8c6] rounded-[12px_0_12px_12px] px-3 py-2 max-w-[85%] self-end shadow-sm">
-          <p className="text-xs text-slate-800 leading-relaxed">
-            ¡Perfecto! Ya te confirmo el horario de entrega 🚀
-          </p>
-          <p className="text-[9px] text-slate-400 text-right mt-1">10:34 ✓✓</p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-// ─── PHONE MOCKUP CON CARRUSEL ─────────────────────────────────────────────────
+// ─── PHONE MOCKUP CON VIDEO ───────────────────────────────────────────────────
 function PhoneMockup() {
-  const [idx, setIdx] = useState(0)
-  const timerRef = useRef(null)
-
-  const goSlide = (n) => {
-    setIdx(n)
-    clearInterval(timerRef.current)
-    timerRef.current = setInterval(() => setIdx((p) => (p + 1) % slides.length), SLIDE_MS)
-  }
+  const [slideIdx, setSlideIdx] = useState(0)
 
   useEffect(() => {
-    timerRef.current = setInterval(() => setIdx((p) => (p + 1) % slides.length), SLIDE_MS)
-    return () => clearInterval(timerRef.current)
+    const timer = setInterval(() => {
+      setSlideIdx((prev) => (prev + 1) % SLIDE_TEXTS.length)
+    }, 3000)
+    return () => clearInterval(timer)
   }, [])
 
   return (
     <div className="relative w-full flex flex-col items-center">
-      {/* Frame del teléfono */}
-      <div className="w-[270px] rounded-[36px] border-2 border-white/10 bg-[#0a0f18] shadow-[0_32px_80px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.08)] overflow-hidden">
-        {/* Notch */}
-        <div className="h-7 bg-[#0a0f18] flex items-center justify-center">
-          <div className="w-20 h-2.5 rounded-full bg-[#1a2133]" />
-        </div>
-
-        {/* Pantalla */}
-        <div className="bg-white min-h-[480px] overflow-hidden flex flex-col">
-          {idx === 0 && <SlideCatalog />}
-          {idx === 1 && <SlideAdmin />}
-          {idx === 2 && <SlideWhatsApp />}
-        </div>
-      </div>
-
-      {/* Dots */}
-      <div className="flex items-center justify-center gap-2 mt-5">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goSlide(i)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              i === idx ? 'w-5 bg-cyan-400' : 'w-1.5 bg-white/20'
-            }`}
-          />
-        ))}
-      </div>
-
-      {/* Label */}
-      <p key={idx} className="mt-3 text-xs text-[--color-text-muted] text-center animate-fade-up">
-        {slides[idx].label}
+      <video
+        src={MOCKUP_VIDEO}
+        className="w-full max-w-[320px] bg-black rounded-[60px]  pr-2.5 pb-3 shadow-[30px_40px_50px_-10px_rgba(0,0,0,0.8)]"
+        autoPlay
+        loop
+        playsInline
+        muted
+      />
+      <p
+        key={slideIdx}
+        className="mt-4 text-sm text-[--color-text-muted] text-center animate-fade-up"
+      >
+        {SLIDE_TEXTS[slideIdx]}
       </p>
     </div>
   )
@@ -283,6 +88,7 @@ const features = [
 
 // ─── CARD DE PRECIO ────────────────────────────────────────────────────────────
 const includes = [
+  'Dominio propio (tunegocio.com.ar)',
   'Sitio completo: home, catálogo, servicios y contacto',
   'Carrito de compras con pedido directo a WhatsApp',
   'Panel de admin para cargar y editar productos',
@@ -326,11 +132,11 @@ function CatalogoWhatsApp() {
     <div className="min-h-screen overflow-x-hidden">
       {/* ── TOP BANNER ─────────────────────────────────────────── */}
       <div
-        className={`fixed top-0 left-0 right-0 z-50 bg-[#0c2d4e] text-white text-center py-3 px-4 text-sm font-semibold transition-transform duration-300 ${
+        className={`fixed top-1 left-1 right-1 z-50 bg-[#0c2d4e] rounded-lg text-white text-center py-4 px-4 text-sm font-semibold transition-transform duration-300 ${
           showBanner ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        Este es un servicio personalizado, tomamos pedidos hasta el 15/6
+        Este es un servicio personalizado, tomamos pedidos hasta el 30/6
       </div>
 
       {/* ── HERO ─────────────────────────────────────────────── */}
@@ -455,8 +261,8 @@ function CatalogoWhatsApp() {
         </div>
       </section>
 
-      {/* ── PRICING ──────────────────────────────────────────── */}
-      <section className="py-28 px-4 sm:px-6 lg:px-8">
+      {/* ── PRICING + FAQ ──────────────────────────────────────── */}
+      <section className="py-28 px-4 sm:px-6 lg:px-8 border-b border-[--color-border]">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-xs font-bold tracking-[0.15em] uppercase text-cyan-500 mb-4">Precio</p>
           <h2 className="text-4xl sm:text-5xl font-black text-[--color-text-primary] leading-tight mb-16">
@@ -483,7 +289,7 @@ function CatalogoWhatsApp() {
               <div className="flex items-baseline gap-1 mb-8">
                 <span className="text-2xl font-semibold text-[--color-text-muted]">$</span>
                 <span className="text-6xl font-black text-[--color-text-primary] tracking-tight leading-none">
-                  25.000
+                  20.000
                 </span>
                 <span className="text-lg text-[--color-text-muted] ml-1">/ mes</span>
               </div>
@@ -516,6 +322,54 @@ function CatalogoWhatsApp() {
                 <IconArrow className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               </a>
             </div>
+          </div>
+        </div>
+
+        {/* FAQ estilo WhatsApp */}
+        <div className="max-w-3xl mx-auto mt-32">
+          <p className="text-xs font-bold tracking-[0.15em] uppercase text-cyan-500 mb-4 text-center">
+            FAQ
+          </p>
+
+          <h2 className="text-4xl sm:text-5xl font-black leading-[1.05] text-[--color-text-primary] text-center mb-16">
+            Las dudas más comunes
+          </h2>
+
+          <div className="flex flex-col gap-8 mt-16">
+            {[
+              {
+                q: 'Tengo muchos productos 😅',
+                a: 'No hay problema. Podés cargarlos todos de una sola vez usando la importación masiva.',
+              },
+              {
+                q: 'No entiendo cómo funciona el panel',
+                a: 'Te acompaño durante el primer mes para que aprendas a usar todo sin complicaciones.',
+              },
+              {
+                q: 'Vendo por mayor y por menor',
+                a: 'Podés configurar precios mayoristas, cantidades mínimas y reglas distintas para cada producto.',
+              },
+              {
+                q: 'Quiero hacer cambios más adelante',
+                a: 'El plan incluye dos cambios por mes realizados personalmente por mí.',
+              },
+            ].map((item) => (
+              <div key={item.q} className="flex flex-col gap-3">
+                {/* Cliente */}
+                <div className="flex justify-start">
+                  <div className="max-w-[85%] rounded-[1.5rem] rounded-bl-md px-5 py-4 bg-[--color-bg-card] border border-[--color-border] shadow-sm">
+                    <p className="text-sm text-[--color-text-primary] font-medium">{item.q}</p>
+                  </div>
+                </div>
+
+                {/* Vos */}
+                <div className="flex justify-end">
+                  <div className="max-w-[85%] rounded-[1.5rem] rounded-br-md px-5 py-4 bg-gradient-to-r from-cyan-400 to-blue-600 text-white shadow-lg">
+                    <p className="text-sm leading-relaxed">{item.a}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -551,7 +405,7 @@ function CatalogoWhatsApp() {
           </h2>
 
           <p className="mt-7 text-xl text-[--color-text-secondary] leading-relaxed">
-            Catálogo online, panel de admin y pedidos directos a tu WhatsApp. Todo por $25.000/mes.
+            Catálogo online, panel de admin y pedidos directos a tu WhatsApp. Todo por $20.000/mes.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mt-12">
