@@ -34,18 +34,23 @@ function IconWhatsApp({ className = 'w-5 h-5' }) {
 // ─── PHONE MOCKUP CON VIDEO ───────────────────────────────────────────────────
 function PhoneMockup() {
   const [slideIdx, setSlideIdx] = useState(0)
+  const [videoReady, setVideoReady] = useState(false)
+  const videoRef = useRef(null)
 
   useEffect(() => {
+    if (!videoReady) return
     const timer = setInterval(() => {
       setSlideIdx((prev) => (prev + 1) % SLIDE_TEXTS.length)
     }, 3000)
     return () => clearInterval(timer)
-  }, [])
+  }, [videoReady])
 
   return (
     <div className="relative w-full flex flex-col items-center">
       <video
+        ref={videoRef}
         src={MOCKUP_VIDEO}
+        onCanPlay={() => setVideoReady(true)}
         className="w-full max-w-[320px] bg-black rounded-[60px]  pr-2.5 pb-3 shadow-[30px_40px_50px_-10px_rgba(0,0,0,0.8)]"
         autoPlay
         loop
@@ -106,7 +111,7 @@ const handleWspClick = () => {
 
 // ─── COMPONENTE PRINCIPAL ──────────────────────────────────────────────────────
 function CatalogoWhatsApp() {
-  const [showBanner, setShowBanner] = useState(false)
+  const [showBanner, setShowBanner] = useState(true)
   const prevScrollY = useRef(0)
 
   useEffect(() => {
@@ -203,7 +208,7 @@ function CatalogoWhatsApp() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-3 mt-14">
               {[
-                { value: '$25K', label: 'por mes, sin sorpresas' },
+                { value: '$20K', label: 'por mes, sin sorpresas' },
                 { value: '0%', label: 'comisión por venta' },
                 { value: '24/7', label: 'tu catálogo activo' },
               ].map((s) => (
