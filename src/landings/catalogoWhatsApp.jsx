@@ -11,7 +11,7 @@ const IconPhone = Smartphone
 
 // ─── VIDEO MOCKUP ─────────────────────────────────────────────────────────────
 const MOCKUP_VIDEO =
-  'https://res.cloudinary.com/dfun5vbsf/video/upload/v1781895890/viedo_landing_cart_whatsapp_qqnoa8.mp4'
+  'https://res.cloudinary.com/dfun5vbsf/video/upload/v1781965675/Viedo_Landing_Cart_Whatsapp_zzgaid.mp4'
 
 const SLIDE_TEXTS = [
   'Vista del cliente en el catálogo',
