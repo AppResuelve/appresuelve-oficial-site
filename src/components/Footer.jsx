@@ -94,6 +94,13 @@ function Footer() {
               >
                 Contacto
               </Link>
+
+              <a
+                href="https://demos.appresuelve.site"
+                className="text-[--color-text-secondary] hover:text-[--color-text-primary] transition-colors"
+              >
+                Demostraciones
+              </a>
             </div>
           </div>
 
