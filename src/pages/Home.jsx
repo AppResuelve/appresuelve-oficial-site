@@ -260,34 +260,34 @@ function Home() {
             </div>
 
             {/* Card 2: Catálogo WhatsApp - Destacada */}
-            <div className="relative rounded-[2rem] bg-gradient-to-br from-cyan-400 via-sky-400 to-blue-600 shadow-[0_24px_80px_rgba(6,182,212,0.25)] lg:row-span-1">
-              <div className="h-full rounded-[calc(2rem-1.5px)] bg-[#1a1a24] p-6 space-y-4 flex flex-col">
+            <div className="relative rounded-[2rem] p-[1.5px] bg-gradient-to-br from-cyan-400 via-sky-400 to-blue-600 shadow-[0_24px_80px_rgba(6,182,212,0.25)] lg:row-span-1">
+              <div className="h-full rounded-[calc(2rem-1.5px)] bg-[--color-bg-card] p-8 flex flex-col">
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400/20 to-blue-600/20 flex items-center justify-center text-2xl">
                     🛒
                   </div>
-                  <span className="px-3 py-1 rounded-full bg-gradient-to-r from-cyan-400/20 to-blue-600/20 border border-cyan-400/30 text-[#0c2d4e] text-xs font-bold">
+                  <span className="px-3 py-1 rounded-full bg-gradient-to-r from-cyan-400/20 to-blue-600/20 border border-cyan-400/30 text-[--color-bg-base] text-xs font-bold">
                     Más pedido
                   </span>
                 </div>
-                <p className="text-xs font-bold uppercase tracking-wide text-[#0c2d4e]">
+                <p className="text-xs font-bold uppercase tracking-wide text-[--color-bg-base] mb-3">
                   Objetivo: vender mucho más
                 </p>
-                <h3 className="text-2xl font-black text-[#0c2d4e]">
+                <h3 className="text-2xl font-black text-[--color-text-primary] mb-4">
                   Catálogo con pedidos WhatsApp
                 </h3>
-                <p className="text-white/60 leading-relaxed flex-1">
+                <p className="text-[--color-text-secondary] leading-relaxed mb-6 flex-1">
                   Mostrá productos y recibí pedidos sin necesidad de ecommerce complejo.
                 </p>
-                <div className="p-4 rounded-2xl bg-[#0c2d4e]/10 border border-[#0c2d4e]/20 mt-2 mb-4">
-                  <p className="text-sm font-bold text-[#0c2d4e]">Vende mucho más</p>
-                  <p className="text-xs text-white/60 mt-1">
+                <div className="p-4 rounded-2xl bg-[--color-bg-base]/10 border border-[--color-bg-base]/20 mb-6">
+                  <p className="text-sm font-bold text-[--color-bg-base]">Vende mucho más</p>
+                  <p className="text-xs text-[--color-text-secondary] mt-1">
                     El cliente entiende: vendo, recibo pedidos, más simple.
                   </p>
                 </div>
                 <Link
                   to="/servicios#sitio-web"
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 text-white/87 font-semibold text-sm outline-4 outline-cyan-300/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_8px_20px_rgba(6,182,212,0.3)] hover:-translate-y-0.5 transition-all duration-200"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold text-sm outline-4 outline-cyan-300/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_8px_20px_rgba(6,182,212,0.3)] hover:-translate-y-0.5 transition-all duration-200"
                 >
                   Ver servicio
                   <svg
