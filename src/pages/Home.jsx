@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { Target, ShoppingCart, BowArrow, Store, MessageCircle, LayersPlus } from 'lucide-react'
 import { products } from '../data/productos'
 import HomeDemoCarousel, { examples } from '../components/HomeDemoCarousel'
 
@@ -217,8 +218,9 @@ function Home() {
           <div className="grid lg:grid-cols-3 gap-6 mt-16">
             {/* Card 1: Landing Page */}
             <div className="group rounded-[2rem] border border-[--color-border] bg-[--color-bg-card] p-8 hover:border-cyan-500/30 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(6,182,212,0.08)] transition-all duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400/10 to-blue-600/10 border border-[--color-border] flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                🎯
+              <div className="w-22 h-14 gap-4 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center gap-2.5 mb-6 group-hover:scale-110 transition-transform duration-300">
+                <BowArrow className="w-5 h-5 text-red-500" />
+                <Target className="w-5 h-5 text-red-500" />
               </div>
               <p className="text-xs font-bold uppercase tracking-wide text-cyan-500 mb-3">
                 Objetivo: convertir rápido
@@ -263,8 +265,9 @@ function Home() {
             <div className="relative rounded-[2rem] p-[1.5px] bg-gradient-to-br from-cyan-400 via-sky-400 to-blue-600 shadow-[0_24px_80px_rgba(6,182,212,0.25)] lg:row-span-1">
               <div className="h-full rounded-[calc(2rem-1.5px)] bg-[--color-bg-card] p-8 flex flex-col">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400/20 to-blue-600/20 flex items-center justify-center text-2xl">
-                    🛒
+                  <div className="w-22 h-14 gap-4 rounded-2xl bg-[#0c2d4e]/10 border border-[#0c2d4e]/20 flex items-center justify-center gap-2.5">
+                    <Store className="w-5 h-5 text-[#0c2d4e]" />
+                    <MessageCircle className="w-5 h-5 text-[#0c2d4e]" />
                   </div>
                   <span className="px-3 py-1 rounded-full bg-gradient-to-r from-cyan-400/20 to-blue-600/20 border border-cyan-400/30 text-[--color-bg-base] text-xs font-bold">
                     Más pedido
@@ -273,15 +276,15 @@ function Home() {
                 <p className="text-xs font-bold uppercase tracking-wide text-[--color-bg-base] mb-3">
                   Objetivo: vender mucho más
                 </p>
-                <h3 className="text-2xl font-black text-[--color-text-primary] mb-4">
+                <h3 className="text-2xl font-black text-[#0c2d4e] mb-4">
                   Catálogo con pedidos WhatsApp
                 </h3>
                 <p className="text-[--color-text-secondary] leading-relaxed mb-6 flex-1">
                   Mostrá productos y recibí pedidos sin necesidad de ecommerce complejo.
                 </p>
-                <div className="p-4 rounded-2xl bg-[--color-bg-base]/10 border border-[--color-bg-base]/20 mb-6">
-                  <p className="text-sm font-bold text-[--color-bg-base]">Vende mucho más</p>
-                  <p className="text-xs text-[--color-text-secondary] mt-1">
+                <div className="p-4 rounded-2xl bg-[#0a0a0f]/10 border border-[#0a0a0f]/20 mb-6">
+                  <p className="text-sm font-bold text-[#0a0a0f]">Vende mucho más</p>
+                  <p className="text-xs text-white/60 mt-1">
                     El cliente entiende: vendo, recibo pedidos, más simple.
                   </p>
                 </div>
@@ -309,8 +312,9 @@ function Home() {
 
             {/* Card 3: Sitio Web Completo */}
             <div className="group rounded-[2rem] border border-[--color-border] bg-[--color-bg-card] p-8 hover:border-cyan-500/30 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(6,182,212,0.08)] transition-all duration-300">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400/10 to-blue-600/10 border border-[--color-border] flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                🌐
+              <div className="w-22 h-14 gap-4 rounded-2xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Store className="w-5 h-5 text-cyan-500" />
+                <LayersPlus className="w-5 h-5 text-cyan-500" />
               </div>
               <p className="text-xs font-bold uppercase tracking-wide text-cyan-500 mb-3">
                 Objetivo: más presencia
