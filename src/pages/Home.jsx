@@ -186,7 +186,7 @@ function Home() {
                 title: 'Diseño responsive',
                 desc: 'Perfecta en celulares, tablets y PC. Sin importar el dispositivo.',
               },
-            ].map((item, i) => (
+            ].map((item) => (
               <div
                 key={item.title}
                 className="group relative rounded-3xl border border-[--color-border] bg-[--color-bg-card] p-7 hover:-translate-y-1.5 hover:border-cyan-500/30 hover:shadow-[0_20px_40px_rgba(6,182,212,0.08)] transition-all duration-300"

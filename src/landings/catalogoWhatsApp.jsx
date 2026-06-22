@@ -34,23 +34,27 @@ function IconWhatsApp({ className = 'w-5 h-5' }) {
 // ─── PHONE MOCKUP CON VIDEO ───────────────────────────────────────────────────
 function PhoneMockup() {
   const [slideIdx, setSlideIdx] = useState(0)
-  const [videoReady, setVideoReady] = useState(false)
   const videoRef = useRef(null)
 
   useEffect(() => {
-    if (!videoReady) return
-    const timer = setInterval(() => {
-      setSlideIdx((prev) => (prev + 1) % SLIDE_TEXTS.length)
-    }, 3000)
-    return () => clearInterval(timer)
-  }, [videoReady])
+    const video = videoRef.current
+    if (!video) return
+
+    const handleTimeUpdate = () => {
+      const t = video.currentTime
+      const newIdx = Math.min(Math.floor(t / 3), SLIDE_TEXTS.length - 1)
+      setSlideIdx(newIdx)
+    }
+
+    video.addEventListener('timeupdate', handleTimeUpdate)
+    return () => video.removeEventListener('timeupdate', handleTimeUpdate)
+  }, [])
 
   return (
     <div className="relative w-full flex flex-col items-center">
       <video
         ref={videoRef}
         src={MOCKUP_VIDEO}
-        onCanPlay={() => setVideoReady(true)}
         className="w-full max-w-[320px] bg-black rounded-[60px]  pr-2.5 pb-3 shadow-[30px_40px_50px_-10px_rgba(0,0,0,0.8)]"
         autoPlay
         loop
@@ -112,19 +116,41 @@ const handleWspClick = () => {
 // ─── COMPONENTE PRINCIPAL ──────────────────────────────────────────────────────
 function CatalogoWhatsApp() {
   const [showBanner, setShowBanner] = useState(true)
-  const prevScrollY = useRef(0)
+  const lastScrollY = useRef(0)
+  const upAccum = useRef(0)
 
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY
-      const scrollingUp = currentY < prevScrollY.current
-      setShowBanner(scrollingUp || currentY < 10)
-      prevScrollY.current = currentY
+      const delta = currentY - lastScrollY.current
+
+      const threshold = window.innerWidth >= 1024 ? 140 : 40 // lg = 1024px
+
+      if (currentY < 10) {
+        setShowBanner(true)
+        upAccum.current = 0
+        lastScrollY.current = currentY
+        return
+      }
+
+      if (delta > 0) {
+        // Bajando → ocultar inmediato, resetear acumulador
+        setShowBanner(false)
+        upAccum.current = 0
+      } else if (delta < 0) {
+        // Subiendo → acumular delta hasta 30px
+        upAccum.current += Math.abs(delta)
+        if (upAccum.current >= threshold) {
+          setShowBanner(true)
+        }
+      }
+
+      lastScrollY.current = currentY
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, []) // sin dependencias — no lee showBanner, todo va por refs
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'smooth'
