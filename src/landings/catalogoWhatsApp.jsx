@@ -167,7 +167,7 @@ function CatalogoWhatsApp() {
           showBanner ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        Este es un servicio personalizado, tomamos pedidos hasta el 30/6
+        Este es un servicio personalizado, tomamos pedidos hasta el 7/7
       </div>
 
       {/* ── HERO ─────────────────────────────────────────────── */}
