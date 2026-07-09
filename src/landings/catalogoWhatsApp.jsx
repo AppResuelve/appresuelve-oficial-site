@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { ArrowRight, Check, Store, ShoppingCart, Settings, Smartphone } from 'lucide-react'
+import ClientCarousel from '../components/ClientCarousel'
 
 // ─── ALIAS DE ÍCONOS LUCIDE ──────────────────────────────────────────────────────
 const IconArrow = ArrowRight
@@ -289,6 +290,21 @@ function CatalogoWhatsApp() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── CLIENTS ──────────────────────────────────────────── */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 border-b border-[--color-border]">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-2xl mx-auto text-center">
+            <p className="text-xs font-bold tracking-[0.15em] uppercase text-cyan-500 mb-4">
+              Clientes
+            </p>
+            <h2 className="text-4xl sm:text-5xl font-black leading-[1.05] text-[--color-text-primary]">
+              Negocios que ya confían en nosotros
+            </h2>
+          </div>
+          <ClientCarousel />
         </div>
       </section>
 
