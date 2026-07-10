@@ -1,9 +1,11 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
+import { MapPin } from 'lucide-react'
 
 const clients = [
   {
     id: 'olipetshop',
     name: 'OliPetShop',
+    location: 'Resistencia, Chaco',
     logo: 'https://res.cloudinary.com/dfun5vbsf/image/upload/v1783609473/cat-dog_mtksim.svg',
     logoFilter: 'brightness(0) invert(18%) sepia(100%) saturate(2500%) hue-rotate(-5deg)',
     type: 'image',
@@ -12,6 +14,7 @@ const clients = [
   {
     id: 'petalos-serena',
     name: 'Petalos Serena',
+    location: 'Mar del Plata, Bs As',
     logo: 'https://res.cloudinary.com/dfun5vbsf/image/upload/v1783609571/logotipo_cueglq.png',
     type: 'image',
     src: 'https://res.cloudinary.com/dfun5vbsf/image/upload/v1783609343/iPhone-14-PRO-MAX-www.petalosserena.com.ar_ba7xe7.webp',
@@ -19,9 +22,18 @@ const clients = [
   {
     id: 'feria-descartable',
     name: 'Feria Descartable',
+    location: 'Resistencia, Chaco',
     logo: 'https://res.cloudinary.com/dfun5vbsf/image/upload/v1783609396/logotipo_es5s2l.png',
     type: 'video',
     src: 'https://res.cloudinary.com/dfun5vbsf/video/upload/v1783609359/Iphone-13-Pro-Www.Feriadescartable.Com.Ar-Oc-V_N9ox-9-Xk_qt1xti.mp4',
+  },
+  {
+    id: 'creaciones-sasa',
+    name: 'Creaciones Sasa',
+    location: 'Victoria, Entre Ríos',
+    logo: 'https://res.cloudinary.com/dfun5vbsf/image/upload/v1783609421/logotipo-buho_r8ft3j.webp',
+    type: 'image',
+    src: 'https://res.cloudinary.com/dfun5vbsf/image/upload/v1783638924/iPhone-14-PRO-MAX-www.creacionessasa.com.ar_xzqco5.webp',
   },
 ]
 
@@ -68,7 +80,7 @@ function ClientCarousel() {
                 : 'opacity-0 absolute inset-0 pointer-events-none'
             }`}
           >
-            {/* Logo + nombre */}
+            {/* Logo + nombre + ubicación */}
             <div className="flex justify-center items-center gap-3 mb-6 md:mb-8">
               <img
                 src={client.logo}
@@ -76,9 +88,15 @@ function ClientCarousel() {
                 className="h-8 md:h-10 w-auto object-contain"
                 style={client.logoFilter ? { filter: client.logoFilter } : undefined}
               />
-              <span className="text-lg md:text-xl font-bold text-[--color-text-primary]">
-                {client.name}
-              </span>
+              <div className="flex flex-col">
+                <span className="text-lg md:text-xl font-bold text-[--color-text-primary]">
+                  {client.name}
+                </span>
+                <span className="flex items-center gap-1 text-xs md:text-sm text-[--color-text-muted]">
+                  <MapPin className="w-3 h-3 md:w-3.5 md:h-3.5" />
+                  {client.location}
+                </span>
+              </div>
             </div>
 
             {/* Visual */}
