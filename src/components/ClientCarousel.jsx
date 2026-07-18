@@ -12,6 +12,14 @@ const clients = [
     src: 'https://res.cloudinary.com/dfun5vbsf/image/upload/v1783609343/iPhone-14-PRO-MAX-www.olipetshop.com.ar_ee99i4.webp',
   },
   {
+    id: 'vitalcer-resistencia',
+    name: 'Vitalcer Resistencia',
+    location: 'Resistencia, Chaco',
+    logo: 'https://res.cloudinary.com/dfun5vbsf/image/upload/v1784410668/logotipo2_vu6we7.png',
+    type: 'image',
+    src: 'https://res.cloudinary.com/dfun5vbsf/image/upload/v1784410668/logotipo2_vu6we7.png',
+  },
+  {
     id: 'petalos-serena',
     name: 'Petalos Serena',
     location: 'Mar del Plata, Bs As',
