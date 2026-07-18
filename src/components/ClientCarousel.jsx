@@ -17,7 +17,7 @@ const clients = [
     location: 'Resistencia, Chaco',
     logo: 'https://res.cloudinary.com/dfun5vbsf/image/upload/v1784410668/logotipo2_vu6we7.png',
     type: 'image',
-    src: 'https://res.cloudinary.com/dfun5vbsf/image/upload/v1784410668/logotipo2_vu6we7.png',
+    src: 'https://res.cloudinary.com/dfun5vbsf/image/upload/v1784410507/iPhone-14-PRO-MAX-www.vitalcerresistencia.com.ar_cpoc15.webp',
   },
   {
     id: 'petalos-serena',
