@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { MapPin } from 'lucide-react'
+import { MapPin, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const clients = [
   {
@@ -50,6 +50,7 @@ const CYCLE_MS = 5000
 function ClientCarousel() {
   const [activeIdx, setActiveIdx] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const [timerKey, setTimerKey] = useState(0)
   const videoRef = useRef(null)
 
   useEffect(() => {
@@ -58,7 +59,7 @@ function ClientCarousel() {
       setActiveIdx((prev) => (prev + 1) % clients.length)
     }, CYCLE_MS)
     return () => clearInterval(timer)
-  }, [isPaused])
+  }, [isPaused, timerKey])
 
   useEffect(() => {
     const video = videoRef.current
@@ -75,6 +76,16 @@ function ClientCarousel() {
     },
     [activeIdx]
   )
+
+  const prev = () => {
+    setActiveIdx((i) => (i - 1 + clients.length) % clients.length)
+    setTimerKey((k) => k + 1)
+  }
+
+  const next = () => {
+    setActiveIdx((i) => (i + 1) % clients.length)
+    setTimerKey((k) => k + 1)
+  }
 
   return (
     <div className="w-full pt-12">
@@ -108,7 +119,15 @@ function ClientCarousel() {
             </div>
 
             {/* Visual */}
-            <div className="flex justify-center">
+            <div className="flex justify-center relative">
+              {/* Desktop prev arrow */}
+              <button
+                onClick={prev}
+                className="hidden md:flex absolute -left-16 lg:-left-20 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-white/80 hover:bg-white shadow-lg transition-all duration-200 cursor-pointer"
+                aria-label="Anterior"
+              >
+                <ChevronLeft className="w-5 h-5 text-[--color-text-primary]" />
+              </button>
               <div className="bg-black rounded-[60px] pr-2.5 pb-3 shadow-[30px_40px_50px_-10px_rgba(0,0,0,0.8)]">
                 {client.type === 'video' ? (
                   <video
@@ -127,25 +146,49 @@ function ClientCarousel() {
                   />
                 )}
               </div>
+              {/* Desktop next arrow */}
+              <button
+                onClick={next}
+                className="hidden md:flex absolute -right-16 lg:-right-20 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-white/80 hover:bg-white shadow-lg transition-all duration-200 cursor-pointer"
+                aria-label="Siguiente"
+              >
+                <ChevronRight className="w-5 h-5 text-[--color-text-primary]" />
+              </button>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Dots */}
-      <div className="flex justify-center gap-2.5 mt-8">
-        {clients.map((client, idx) => (
-          <button
-            key={client.id}
-            onClick={() => goTo(idx)}
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
-              idx === activeIdx ? 'bg-cyan-500 scale-120' : 'bg-white/50'
-            }`}
-            aria-label={`Ver ${client.name}`}
-          />
-        ))}
+      {/* Mobile arrows + Dots */}
+      <div className="flex justify-center items-center gap-4 mt-8">
+        <button
+          onClick={prev}
+          className="flex md:hidden w-8 h-8 items-center justify-center rounded-full bg-white/80 hover:bg-white shadow-md transition-all duration-200 cursor-pointer"
+          aria-label="Anterior"
+        >
+          <ChevronLeft className="w-4 h-4 text-[--color-text-primary]" />
+        </button>
+        <div className="flex gap-2.5">
+          {clients.map((client, idx) => (
+            <button
+              key={client.id}
+              onClick={() => goTo(idx)}
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
+                idx === activeIdx ? 'bg-cyan-500 scale-120' : 'bg-white/50'
+              }`}
+              aria-label={`Ver ${client.name}`}
+            />
+          ))}
+        </div>
+        <button
+          onClick={next}
+          className="flex md:hidden w-8 h-8 items-center justify-center rounded-full bg-white/80 hover:bg-white shadow-md transition-all duration-200 cursor-pointer"
+          aria-label="Siguiente"
+        >
+          <ChevronRight className="w-4 h-4 text-[--color-text-primary]" />
+        </button>
       </div>
     </div>
   )
