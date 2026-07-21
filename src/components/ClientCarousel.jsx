@@ -123,10 +123,10 @@ function ClientCarousel() {
               {/* Desktop prev arrow */}
               <button
                 onClick={prev}
-                className="hidden md:flex absolute -left-16 lg:-left-20 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-white/80 hover:bg-white shadow-lg transition-all duration-200 cursor-pointer"
+                className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-16 h-16 justify-center rounded-full transition-all duration-200 cursor-pointer group"
                 aria-label="Anterior"
               >
-                <ChevronLeft className="w-5 h-5 text-[--color-text-primary]" />
+                <ChevronLeft className="w-12 h-12 text-[--color-text-primary] group-hover:text-cyan-500 transition-colors duration-200" />
               </button>
               <div className="bg-black rounded-[60px] pr-2.5 pb-3 shadow-[30px_40px_50px_-10px_rgba(0,0,0,0.8)]">
                 {client.type === 'video' ? (
@@ -149,10 +149,10 @@ function ClientCarousel() {
               {/* Desktop next arrow */}
               <button
                 onClick={next}
-                className="hidden md:flex absolute -right-16 lg:-right-20 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full bg-white/80 hover:bg-white shadow-lg transition-all duration-200 cursor-pointer"
+                className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-16 h-16 justify-center rounded-full transition-all duration-200 cursor-pointer group"
                 aria-label="Siguiente"
               >
-                <ChevronRight className="w-5 h-5 text-[--color-text-primary]" />
+                <ChevronRight className="w-12 h-12 text-[--color-text-primary] group-hover:text-cyan-500 transition-colors duration-200" />
               </button>
             </div>
           </div>
@@ -163,10 +163,10 @@ function ClientCarousel() {
       <div className="flex justify-center items-center gap-4 mt-8">
         <button
           onClick={prev}
-          className="flex md:hidden w-8 h-8 items-center justify-center rounded-full bg-white/80 hover:bg-white shadow-md transition-all duration-200 cursor-pointer"
+          className="flex md:hidden w-12 h-12 items-center justify-center rounded-full transition-all duration-200 cursor-pointer"
           aria-label="Anterior"
         >
-          <ChevronLeft className="w-4 h-4 text-[--color-text-primary]" />
+          <ChevronLeft className="w-8 h-8 text-[--color-text-primary]" />
         </button>
         <div className="flex gap-2.5">
           {clients.map((client, idx) => (
@@ -184,10 +184,10 @@ function ClientCarousel() {
         </div>
         <button
           onClick={next}
-          className="flex md:hidden w-8 h-8 items-center justify-center rounded-full bg-white/80 hover:bg-white shadow-md transition-all duration-200 cursor-pointer"
+          className="flex md:hidden w-12 h-12 items-center justify-center rounded-full transition-all duration-200 cursor-pointer"
           aria-label="Siguiente"
         >
-          <ChevronRight className="w-4 h-4 text-[--color-text-primary]" />
+          <ChevronRight className="w-8 h-8 text-[--color-text-primary]" />
         </button>
       </div>
     </div>

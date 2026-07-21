@@ -114,6 +114,9 @@ const handleWspClick = () => {
   }
 }
 
+const BANNER_TEXT =
+  'Solo tomo 3 proyectos nuevos por mes para acompañar bien a cada cliente — cupos hasta el 30/7'
+
 // ─── COMPONENTE PRINCIPAL ──────────────────────────────────────────────────────
 function CatalogoWhatsApp() {
   const [showBanner, setShowBanner] = useState(true)
@@ -164,11 +167,11 @@ function CatalogoWhatsApp() {
     <div className="min-h-screen overflow-x-hidden">
       {/* ── TOP BANNER ─────────────────────────────────────────── */}
       <div
-        className={`fixed top-1 left-1 right-1 z-50 bg-[#0c2d4e] rounded-lg text-white text-center py-4 px-4 text-sm font-semibold transition-transform duration-300 ${
+        className={`fixed top-1 left-0 right-0 z-50 max-w-[800px] mx-auto bg-[#0c2d4e] rounded-lg text-white text-center py-4 px-4 text-sm font-semibold transition-transform duration-300 ${
           showBanner ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        Este es un servicio personalizado, tomamos pedidos hasta el 7/7
+        {BANNER_TEXT}
       </div>
 
       {/* ── HERO ─────────────────────────────────────────────── */}
@@ -235,22 +238,32 @@ function CatalogoWhatsApp() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-3 mt-14">
               {[
-                { value: '$20K', label: 'por mes, sin sorpresas' },
+                { value: '+10', label: 'negocios ya confían' },
                 { value: '0%', label: 'comisión por venta' },
                 { value: '24/7', label: 'tu catálogo activo' },
-              ].map((s) => (
-                <div
-                  key={s.value}
-                  className="rounded-2xl border border-[--color-border] bg-[--color-bg-card]/70 backdrop-blur-xl p-4 md:p-5 hover:border-cyan-500/30 hover:bg-[--color-bg-elevated] transition-all duration-200"
-                >
-                  <p className="text-3xl font-black text-[--color-text-primary] tracking-tight">
-                    {s.value}
-                  </p>
-                  <p className="mt-1.5 text-xs font-medium text-[--color-text-muted] uppercase tracking-wide min-h-8">
-                    {s.label}
-                  </p>
-                </div>
-              ))}
+              ].map((s, i) => {
+                const cls =
+                  'rounded-2xl border border-[--color-border] bg-[--color-bg-card]/70 backdrop-blur-xl p-4 md:p-5 hover:border-cyan-500/30 hover:bg-[--color-bg-elevated] transition-all duration-200'
+                const inner = (
+                  <>
+                    <p className="text-3xl font-black text-[--color-text-primary] tracking-tight">
+                      {s.value}
+                    </p>
+                    <p className="mt-1.5 text-xs font-medium text-[--color-text-muted] uppercase tracking-wide min-h-8">
+                      {s.label}
+                    </p>
+                  </>
+                )
+                return i === 0 ? (
+                  <a key={s.value} href="#clientes" className={`block ${cls}`}>
+                    {inner}
+                  </a>
+                ) : (
+                  <div key={s.value} className={cls}>
+                    {inner}
+                  </div>
+                )
+              })}
             </div>
           </div>
 
@@ -294,11 +307,14 @@ function CatalogoWhatsApp() {
       </section>
 
       {/* ── CLIENTS ──────────────────────────────────────────── */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-b border-[--color-border]">
+      <section
+        id="clientes"
+        className="py-24 px-4 sm:px-6 lg:px-8 border-b border-[--color-border]"
+      >
         <div className="max-w-7xl mx-auto">
           <div className="max-w-2xl mx-auto text-center">
             <p className="text-xs font-bold tracking-[0.15em] uppercase text-cyan-500 mb-4">
-              Clientes
+              Nuestros ultimos clientes
             </p>
             <h2 className="text-4xl sm:text-5xl font-black leading-[1.05] text-[--color-text-primary]">
               Negocios que ya confían en nosotros
@@ -365,9 +381,12 @@ function CatalogoWhatsApp() {
                 onClick={handleWspClick}
               >
                 <IconWhatsApp className="w-5 h-5" />
-                Consultar por WhatsApp
+                Quiero mi catálogo
                 <IconArrow className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               </a>
+              <p className="mt-4 text-xs text-center text-[--color-text-muted]">
+                Sin contrato de permanencia — cancelás cuando quieras.
+              </p>
             </div>
           </div>
         </div>
@@ -464,7 +483,7 @@ function CatalogoWhatsApp() {
               onClick={handleWspClick}
             >
               <IconWhatsApp className="w-5 h-5" />
-              Hablar ahora
+              Quiero mi catálogo
               <IconArrow className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
             </a>
 
@@ -485,14 +504,15 @@ function CatalogoWhatsApp() {
       >
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
           <h2 className="text-4xl sm:text-5xl font-black text-[--color-text-primary] leading-[1.1]">
-            Soy Tomas, y sí,
+            Soy Tomas, y vas a hablar
             <br />
-            no soy una empresa gigante.
+            directo conmigo.
           </h2>
 
           <p className="mt-6 text-lg text-center text-[--color-text-secondary] leading-relaxed max-w-2xl ">
-            Soy un desarrollador independiente con más de 3 años de experiencia y he creado
-            soluciones más grandes y complejas que esta.
+            Sin intermediarios, sin call centers: cuando escribís, te responde la misma persona que
+            te desarrolla y mantiene el sitio. Más de 3 años de experiencia creando soluciones más
+            grandes y complejas que esta.
           </p>
 
           {/* Videos */}
@@ -535,7 +555,7 @@ function CatalogoWhatsApp() {
               onClick={handleWspClick}
             >
               <IconWhatsApp className="w-5 h-5" />
-              Hablar ahora
+              Quiero mi catálogo
               <IconArrow className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
             </a>
           </div>
