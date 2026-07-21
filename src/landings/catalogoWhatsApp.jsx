@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { ArrowRight, Check, Store, ShoppingCart, Settings, Smartphone } from 'lucide-react'
 import ClientCarousel from '../components/ClientCarousel'
+import FooterLanding from '../components/FooterLanding'
 
 // ─── ALIAS DE ÍCONOS LUCIDE ──────────────────────────────────────────────────────
 const IconArrow = ArrowRight
@@ -100,11 +101,13 @@ const features = [
 const includes = [
   'Dominio propio (tunegocio.com.ar)',
   'Sitio completo: home, catálogo, servicios y contacto',
-  'Carrito de compras con pedido directo a WhatsApp',
+  'Carrito con pedido directo a WhatsApp',
   'Panel de admin para cargar y editar productos',
-  'Actualizá precios y ofertas cuando quieras',
-  'Diseño responsive (celular, tablet y PC)',
+  'Actualizá productos, precios y ofertas cuando quieras',
+  'Diseño adaptativo (celular, tablet y PC)',
   'Sin comisiones por venta',
+  'Soporte y acompañamiento durante el primer mes',
+  'Cambios estéticos y de contenido: 2 por mes',
 ]
 
 const handleWspClick = () => {
@@ -114,8 +117,12 @@ const handleWspClick = () => {
   }
 }
 
-const BANNER_TEXT =
-  'Solo tomo 3 proyectos nuevos por mes para acompañar bien a cada cliente — cupos hasta el 30/7'
+const BANNER_TEXT = (
+  <>
+    Solo tomo 4 proyectos nuevos por mes para acompañar bien a cada cliente —{' '}
+    <u>2 cupos hasta el 31/7</u>
+  </>
+)
 
 // ─── COMPONENTE PRINCIPAL ──────────────────────────────────────────────────────
 function CatalogoWhatsApp() {
@@ -167,7 +174,7 @@ function CatalogoWhatsApp() {
     <div className="min-h-screen overflow-x-hidden">
       {/* ── TOP BANNER ─────────────────────────────────────────── */}
       <div
-        className={`fixed top-1 left-0 right-0 z-50 max-w-[800px] mx-auto bg-[#0c2d4e] rounded-lg text-white text-center py-4 px-4 text-sm font-semibold transition-transform duration-300 ${
+        className={`fixed top-1 left-1 right-1 z-50 max-w-[800px] mx-auto bg-[#0c2d4e] rounded-lg text-white text-center py-4 px-4 text-sm font-semibold transition-transform duration-300 ${
           showBanner ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
@@ -342,8 +349,8 @@ function CatalogoWhatsApp() {
           </div>
 
           {/* Card destacada */}
-          <div className="max-w-lg mx-auto relative rounded-[2rem] p-[1.5px] bg-gradient-to-br from-cyan-400 via-sky-400 to-blue-600 shadow-[0_24px_80px_rgba(6,182,212,0.25)]">
-            <div className="h-full rounded-[calc(2rem-1.5px)] bg-[--color-bg-card] p-8 md:p-10 flex flex-col">
+          <div className="max-w-lg mx-auto relative rounded-[2rem] bg-gradient-to-br from-cyan-400 via-sky-400 to-blue-600 shadow-[0_24px_80px_rgba(6,182,212,0.25)]">
+            <div className="h-full rounded-[calc(2rem-1.5px)] bg-[--color-bg-card] p-6 md:p-10 flex flex-col">
               <p className="text-lg font-bold uppercase tracking-wide text-[#0c2d4e] mb-2">
                 Catálogo con pedidos WhatsApp
               </p>
@@ -362,9 +369,9 @@ function CatalogoWhatsApp() {
                 {includes.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-3 text-sm text-[--color-text-secondary]"
+                    className="flex items-start gap-3 text-md text-[--color-text-secondary]"
                   >
-                    <div className="mt-0.5 w-5 h-5 rounded-full bg-[#0c2d4e]/10 border border-[#0c2d4e]/30 flex items-center justify-center shrink-0 text-[#0c2d4e]">
+                    <div className="mt-0.5 w-6 h-6 p-0.5 rounded-full bg-[#0c2d4e]/10 border border-[#0c2d4e]/30 flex items-center justify-center shrink-0 text-[#0c2d4e]">
                       <IconCheck />
                     </div>
                     {item}
@@ -377,14 +384,14 @@ function CatalogoWhatsApp() {
                 href={WSP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="group w-full inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold text-base shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_8px_20px_rgba(6,182,212,0.3)] hover:-translate-y-0.5 transition-all duration-200"
+                className="group w-full inline-flex items-center justify-center gap-3 mb-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-[--color-text-primary] font-semibold text-base shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_8px_20px_rgba(6,182,212,0.3)] hover:-translate-y-0.5 transition-all duration-200"
                 onClick={handleWspClick}
               >
                 <IconWhatsApp className="w-5 h-5" />
                 Quiero mi catálogo
                 <IconArrow className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               </a>
-              <p className="mt-4 text-xs text-center text-[--color-text-muted]">
+              <p className="text-xs text-center text-[--color-text-muted]">
                 Sin contrato de permanencia — cancelás cuando quieras.
               </p>
             </div>
@@ -461,7 +468,7 @@ function CatalogoWhatsApp() {
             Empezá esta semana
           </p>
           <h2 className="text-5xl sm:text-6xl font-black text-[--color-text-primary] leading-[1.0] tracking-tight">
-            Tu negocio puede recibir pedidos por{' '}
+            Tu negocio podría recibir pedidos por{' '}
             <span style={{ color: '#25D366', textShadow: '0 0 8px rgba(0,0,0,0.4)' }}>
               WhatsApp
             </span>{' '}
@@ -561,6 +568,8 @@ function CatalogoWhatsApp() {
           </div>
         </div>
       </section>
+
+      <FooterLanding />
     </div>
   )
 }
